@@ -2,7 +2,9 @@ package BattleshipTests;
 
 import BattleshipGame.Cell;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CellTests {
     Cell cell;
@@ -14,9 +16,10 @@ public class CellTests {
 
     @Test
     void SetCellTest() {
-        AssertTrue(cell.value == 0);
-        AssertFalse(cell.show);
+        assertEquals(0, cell.getM_value());
+        assertEquals(false, cell.getM_show());
     }
+
     /*
     @Test
     void SetCellValueTest() {
