@@ -20,15 +20,17 @@ public class CellTests {
         assertEquals(false, cell.getM_show());
     }
 
-    /*
     @Test
-    void SetCellValueTest() {
-
+    void SetterGetterValueTest() {
+        //Add a 2 to the value
+        cell.setM_value(2);
+        assertEquals(2, cell.getM_value());
     }
 
     @Test
-    void SetCellShowTest() {
-
+    void SetterGetterShowTest() {
+        //Switch from false to true
+        cell.setM_show(true);
+        assertEquals(true, cell.getM_show());
     }
-    */
 }
