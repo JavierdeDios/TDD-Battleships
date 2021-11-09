@@ -15,8 +15,8 @@ public class ShipTests {
 
     @Test
     void setShipTest() {
-        assertEquals(null, ship.getM_x());
-        assertEquals(null, ship.getM_y());
+        assertEquals(-1, ship.getM_x());
+        assertEquals(-1, ship.getM_y());
         assertEquals(' ', ship.getM_orientation());
         assertEquals(0, ship.getM_length());
     }
@@ -45,7 +45,7 @@ public class ShipTests {
     @Test
     void SetterGetterLengthTest() {
         ship.setM_length(5);
-        assertEquals(5, ship.getM_length);
+        assertEquals(5, ship.getM_length());
     }
 
     @Test
@@ -55,6 +55,6 @@ public class ShipTests {
         assertEquals(5, ship.getM_x());
         assertEquals(4, ship.getM_y());
         assertEquals('h', ship.getM_orientation());
-        assertEquals(3, getM_length());
+        assertEquals(3, ship.getM_length());
     }
 }
