@@ -1,6 +1,5 @@
 package BattleshipTests;
 
-import BattleshipGame.Cell;
 import BattleshipGame.Player;
 
 import org.junit.jupiter.api.Test;
@@ -15,4 +14,13 @@ public class PlayerTests {
         player = new Player();
     }
 
+    @Test
+    void setPlayerTest() {
+        assertEquals(0, player.getM_shipsAlive());
+    }
+
+    @Test
+    void setShipTest() {
+        
+    }
 }
