@@ -14,7 +14,7 @@ public class PlayerTests {
         player = new Player();
     }
 
-    @Test
+    /*@Test
     void setPlayerTest() {
         assertEquals(0, player.getM_shipsAlive());
     }
@@ -22,5 +22,5 @@ public class PlayerTests {
     @Test
     void setShipTest() {
         
-    }
+    }*/
 }

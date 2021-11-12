@@ -3,6 +3,9 @@ package BattleshipTests;
 import BattleshipGame.Ship;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ShipTests {
@@ -21,16 +24,24 @@ public class ShipTests {
         assertEquals(0, ship.getM_length());
     }
 
-    @Test
-    void SetterGetterXTest() {
-        ship.setM_x(5);
-        assertEquals(5, ship.getM_x());
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
+    void SetterGetterXTest(int i) {
+        ship.setM_x(i);
+        assertEquals(i, ship.getM_x());
+
+        ship.setM_x(i + 1);
+        assertEquals(i + 1, ship.getM_x());
     }
 
-    @Test
-    void SetterGetterYTest() {
-        ship.setM_y(2);
-        assertEquals(2, ship.getM_y());
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
+    void SetterGetterYTest(int i) {
+        ship.setM_y(i);
+        assertEquals(i, ship.getM_y());
+
+        ship.setM_y(i + 1);
+        assertEquals(i + 1, ship.getM_y());
     }
 
     @Test
@@ -42,19 +53,28 @@ public class ShipTests {
         assertEquals('v', ship.getM_orientation());
     }
 
-    @Test
-    void SetterGetterLengthTest() {
-        ship.setM_length(5);
-        assertEquals(5, ship.getM_length());
+    @ParameterizedTest
+    @ValueSource(ints = {2, 3, 4, 5})
+    void SetterGetterLengthTest(int i) {
+        ship.setM_length(i);
+        assertEquals(i, ship.getM_length());
+
+        ship.setM_length(i + 1);
+        assertEquals(i + 1, ship.getM_length());
     }
 
     @Test
     void initializeShipTest() {
         ship = new Ship(5, 4, 'h', 3);
-
         assertEquals(5, ship.getM_x());
         assertEquals(4, ship.getM_y());
         assertEquals('h', ship.getM_orientation());
         assertEquals(3, ship.getM_length());
+
+        ship = new Ship(4, 7, 'v', 2);
+        assertEquals(4, ship.getM_x());
+        assertEquals(7, ship.getM_y());
+        assertEquals('v', ship.getM_orientation());
+        assertEquals(2, ship.getM_length());
     }
 }
