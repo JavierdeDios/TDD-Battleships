@@ -26,16 +26,16 @@ public class GameboardTests {
         assertEquals(i, tauler.getCellValue(i, i));
     }
 
-    void SetterGetterCellShowTest() {
-        tauler.setCellValue(i, i, i); //(x, y, value)
-        assertEquals(i, tauler.getCellValue(i, i));
-    }
-
     @Test
     void SwitchShowCellTest() {
         tauler.showCell(0, 0);
-        assertEquals(true, tauler.getshowCell());
+        assertEquals(true, tauler.getCellShow(0, 0));
+        assertEquals(false, tauler.getCellShow(0, 1));
     }
 
-    
+    /*@ParameterizedTest
+    void PlaceShipTest() {
+
+    }*/
+
 }
