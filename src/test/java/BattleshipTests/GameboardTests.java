@@ -62,4 +62,45 @@ public class GameboardTests {
         tauler.setCellValue(i, 0, 1);
         assertEquals(i>=5, tauler.placeShip(0, 0, 'v', 5));
     }
+
+    // Tests funcio placeShip que testejen l'inserció
+    @ParameterizedTest
+    @MethodSource(value = "BattleshipTests.ParamProvider#sourcePlaceShipHorizontal")
+    void PlaceShipPlacementHorizontalTest(int x, int y, int length, boolean result) {
+        assertEquals(result, tauler.placeShip(x, y, 'h', length));
+        if(!result) {
+            for(int i = 0; i < 10; i++) {
+                assertEquals(0, tauler.getCellValue(0, i));
+            }
+        }
+        else {
+            for(int i = 0; i < 10; i++) {
+                if (i >= y && i <= y + length) {
+                    assertEquals(1, tauler.getCellValue(0, i));
+                } else {
+                    assertEquals(0, tauler.getCellValue(0, i));
+                }
+            }
+        }
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = "BattleshipTests.ParamProvider#sourcePlaceShipVertical")
+    void PlaceShipPlacementVerticalTest(int x, int y, int length, boolean result) {
+        assertEquals(result, tauler.placeShip(x, y, 'v', length));
+        if(!result) {
+            for(int i = 0; i < 10; i++) {
+                assertEquals(0, tauler.getCellValue(i, 0));
+            }
+        }
+        else {
+            for(int i = 0; i < 10; i++) {
+                if (i >= x && i <= x + length) {
+                    assertEquals(1, tauler.getCellValue(i, 0));
+                } else {
+                    assertEquals(0, tauler.getCellValue(i, 0));
+                }
+            }
+        }
+    }
 }
