@@ -21,9 +21,19 @@ public class Gameboard {
 
     public boolean placeShip(int x, int y, int orientation, int length) {
         if (orientation == 'h' && y + length <= 10) {
+            for(int i = y; i < y + length; i++) {
+                if (this.getCellValue(x, i) != 0) {
+                    return false;
+                }
+            }
             return true;
         }
         if (orientation == 'v' && x + length <= 10) {
+            for(int i = x; i < x + length; i++) {
+                if (this.getCellValue(i, y) != 0) {
+                    return false;
+                }
+            }
             return true;
         }
         return false;

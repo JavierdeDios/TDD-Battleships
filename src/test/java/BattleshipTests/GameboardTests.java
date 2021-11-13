@@ -59,7 +59,7 @@ public class GameboardTests {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
     void PlaceShipVerticalCollisionTest(int i) {
-        tauler.setCellValue(0, i, 1);
+        tauler.setCellValue(i, 0, 1);
         assertEquals(i>=5, tauler.placeShip(0, 0, 'v', 5));
     }
 }
