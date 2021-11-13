@@ -47,4 +47,12 @@ public class Gameboard {
         return false;
     }
 
+    public int attackPoint(int x, int y) {
+        return 0;
+    }
+
+    public boolean isSunk(int x, int y, char orientation, int length) {
+        return true;
+    }
+
 }

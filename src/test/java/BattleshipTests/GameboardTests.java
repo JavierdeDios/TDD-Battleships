@@ -120,9 +120,11 @@ public class GameboardTests {
     void attackPointTest(int x, int y, int resultat) {
         tauler.setCellValue(0,1, 1);
         tauler.showCell(0,0);
-        assertEquals(0, tauler.attackPoint(0, 0)); //Ja mostrada
-        assertEquals(1, tauler.attackPoint(0, 2)); //Aigua
-        assertEquals(2, tauler.attackPoint(0, 1)); //Tocat
+        assertEquals(-1, tauler.attackPoint(0, 0)); //Ja mostrada
+        assertEquals(0, tauler.attackPoint(0, 2)); //Aigua
+        assertEquals(-1, tauler.attackPoint(0, 2)); //Ja mostrat
+        assertEquals(1, tauler.attackPoint(0, 1)); //Tocat
+        assertEquals(-1, tauler.attackPoint(0, 1)); //Ja mostrat
     }
 
     @ParameterizedTest
