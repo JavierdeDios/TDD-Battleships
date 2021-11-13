@@ -57,6 +57,19 @@ public class Gameboard {
     }
 
     public boolean isSunk(int x, int y, char orientation, int length) {
+        if (orientation == 'h') {
+            for(int i = y; i < y + length; i++) {
+                if (!this.getCellShow(x, i)) {
+                    return false;
+                }
+            }
+        } else {
+            for(int i = x; i < x + length; i++) {
+                if (!this.getCellShow(i, y)) {
+                    return false;
+                }
+            }
+        }
         return true;
     }
 

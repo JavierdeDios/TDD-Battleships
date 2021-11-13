@@ -137,7 +137,7 @@ public class GameboardTests {
         assertEquals(-1, tauler.attackPoint(4, 0)); //Ja mostrat
     }
 
-    /*@ParameterizedTest
+    @ParameterizedTest
     @MethodSource(value = "BattleshipTests.ParamProvider#sourceSunkShip")
     void isSunkTest(int x, int y, char orientation, int length) {
         tauler.placeShip(x, y, orientation, length);
@@ -154,5 +154,5 @@ public class GameboardTests {
             }
             assertEquals(true, tauler.isSunk(x, y, orientation, length));
         }
-    }*/
+    }
 }
