@@ -48,7 +48,12 @@ public class Gameboard {
     }
 
     public int attackPoint(int x, int y) {
-        return 0;
+        if (this.getCellShow(x, y)) {
+            return -1;
+        } else {
+            this.showCell(x, y);
+            return this.getCellValue(x, y);
+        }
     }
 
     public boolean isSunk(int x, int y, char orientation, int length) {

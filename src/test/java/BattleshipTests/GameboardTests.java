@@ -117,17 +117,27 @@ public class GameboardTests {
     }
 
     @Test
-    void attackPointTest(int x, int y, int resultat) {
+    void attackPointTest() {
         tauler.setCellValue(0,1, 1);
         tauler.showCell(0,0);
-        assertEquals(-1, tauler.attackPoint(0, 0)); //Ja mostrada
+        assertEquals(-1, tauler.attackPoint(0, 0)); //Ja mostrat
         assertEquals(0, tauler.attackPoint(0, 2)); //Aigua
         assertEquals(-1, tauler.attackPoint(0, 2)); //Ja mostrat
         assertEquals(1, tauler.attackPoint(0, 1)); //Tocat
         assertEquals(-1, tauler.attackPoint(0, 1)); //Ja mostrat
+
+        tauler.placeShip(1, 0, 'v', 3);
+        assertEquals(1, tauler.attackPoint(1, 0)); //Tocat
+        assertEquals(1, tauler.attackPoint(2, 0)); //Tocat
+        assertEquals(1, tauler.attackPoint(3, 0)); //Tocat
+        assertEquals(0, tauler.attackPoint(4, 0)); //Aigua
+        assertEquals(-1, tauler.attackPoint(1, 0)); //Ja mostrat
+        assertEquals(-1, tauler.attackPoint(2, 0)); //Ja mostrat
+        assertEquals(-1, tauler.attackPoint(3, 0)); //Ja mostrat
+        assertEquals(-1, tauler.attackPoint(4, 0)); //Ja mostrat
     }
 
-    @ParameterizedTest
+    /*@ParameterizedTest
     @MethodSource(value = "BattleshipTests.ParamProvider#sourceSunkShip")
     void isSunkTest(int x, int y, char orientation, int length) {
         tauler.placeShip(x, y, orientation, length);
@@ -144,5 +154,5 @@ public class GameboardTests {
             }
             assertEquals(true, tauler.isSunk(x, y, orientation, length));
         }
-    }
+    }*/
 }
