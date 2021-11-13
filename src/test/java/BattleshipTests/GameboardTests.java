@@ -104,5 +104,15 @@ public class GameboardTests {
         }
     }
 
+    @ParameterizedTest
+    @MethodSource(value = "BattleshipTests.ParamProvider#sourcePlaceShipCollision")
+    void PlaceShipPlacementShipCollisionTest(int x, int y, char orientation, int length, boolean result) {
+        assertEquals(true, tauler.placeShip(0, 5, 'v', 5));
+        assertEquals(true, tauler.placeShip(5, 4, 'v', 5));
 
+        assertEquals(true, tauler.placeShip(4, 0, 'h', 5));
+        assertEquals(true, tauler.placeShip(5, 5, 'h', 5));
+
+        assertEquals(result, tauler.placeShip(x, y, orientation, length));
+    }
 }
