@@ -63,11 +63,17 @@ public class Gameboard {
                     return false;
                 }
             }
+            for(int i = y; i < y + length; i++) {
+                this.setCellValue(x, i, 2);
+            }
         } else {
             for(int i = x; i < x + length; i++) {
                 if (!this.getCellShow(i, y)) {
                     return false;
                 }
+            }
+            for(int i = x; i < x + length; i++) {
+                this.setCellValue(i, y, 2);
             }
         }
         return true;
