@@ -6,6 +6,8 @@ import BattleshipGame.Cell;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,9 +35,11 @@ public class GameboardTests {
         assertEquals(false, tauler.getCellShow(0, 1));
     }
 
-    /*@ParameterizedTest
-    void PlaceShipTest() {
-
-    }*/
+    //Pairwise test per a totes les longituds de vaixells.
+    @ParameterizedTest
+    @MethodSource(value = "BattleshipTests.ParamProvider#sourcePlaceShips")
+    void PlaceShipTest(int x, int y, char orientation, int len, boolean resultat) {
+        assertEquals(resultat, tauler.placeShip(x, y, orientation, len));
+    }
 
 }
