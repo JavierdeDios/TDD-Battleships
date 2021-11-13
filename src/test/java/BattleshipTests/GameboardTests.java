@@ -37,9 +37,29 @@ public class GameboardTests {
 
     //Pairwise test per a totes les longituds de vaixells.
     @ParameterizedTest
-    @MethodSource(value = "BattleshipTests.ParamProvider#sourcePlaceShips")
+    @MethodSource(value = "BattleshipTests.ParamProvider#sourcePlaceShip")
     void PlaceShipTest(int x, int y, char orientation, int len, boolean resultat) {
         assertEquals(resultat, tauler.placeShip(x, y, orientation, len));
     }
 
+
+    @ParameterizedTest
+    @MethodSource(value = "BattleshipTests.ParamProvider#sourcePlaceShipBoundaries")
+    void PlaceShipBoundariesTest(int x, int y, char orientation, int len, boolean resultat) {
+        assertEquals(resultat, tauler.placeShip(x, y, orientation, len));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
+    void PlaceShipHorizontalCollisionTest(int i) {
+        tauler.setCellValue(0, i, 1);
+        assertEquals(i>=5, tauler.placeShip(0, 0, 'h', 5));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
+    void PlaceShipVerticalCollisionTest(int i) {
+        tauler.setCellValue(0, i, 1);
+        assertEquals(i>=5, tauler.placeShip(0, 0, 'v', 5));
+    }
 }

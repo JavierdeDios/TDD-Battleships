@@ -20,15 +20,11 @@ public class Gameboard {
     public boolean getCellShow(int x, int y) { return this.board[x][y].getM_show(); }
 
     public boolean placeShip(int x, int y, int orientation, int length) {
-        if (orientation == 'h') {
-            if (x + length <= 10) {
-                return true;
-            }
+        if (orientation == 'h' && y + length <= 10) {
+            return true;
         }
-        if (orientation == 'v') {
-            if (y + length <= 10) {
-                return true;
-            }
+        if (orientation == 'v' && x + length <= 10) {
+            return true;
         }
         return false;
     }
