@@ -75,7 +75,7 @@ public class GameboardTests {
         }
         else {
             for(int i = 0; i < 10; i++) {
-                if (i >= y && i <= y + length) {
+                if (i >= y && i < y + length) {
                     assertEquals(1, tauler.getCellValue(0, i));
                 } else {
                     assertEquals(0, tauler.getCellValue(0, i));
@@ -95,7 +95,7 @@ public class GameboardTests {
         }
         else {
             for(int i = 0; i < 10; i++) {
-                if (i >= x && i <= x + length) {
+                if (i >= x && i < x + length) {
                     assertEquals(1, tauler.getCellValue(i, 0));
                 } else {
                     assertEquals(0, tauler.getCellValue(i, 0));
@@ -103,4 +103,6 @@ public class GameboardTests {
             }
         }
     }
+
+
 }
