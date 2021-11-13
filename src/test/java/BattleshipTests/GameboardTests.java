@@ -147,12 +147,18 @@ public class GameboardTests {
                 tauler.attackPoint(x, i);
             }
             assertEquals(true, tauler.isSunk(x, y, orientation, length));
+            for(int i = y; i < length + y; i++) {
+                assertEquals(2, tauler.getCellValue(x, i));
+            }
         } else {
             for(int i = x; i < length + x; i++) {
                 assertEquals(false, tauler.isSunk(x, y, orientation, length));
                 tauler.attackPoint(i, y);
             }
             assertEquals(true, tauler.isSunk(x, y, orientation, length));
+            for(int i = x; i < length + x; i++) {
+                assertEquals(2, tauler.getCellValue(i, y));
+            }
         }
     }
 }
