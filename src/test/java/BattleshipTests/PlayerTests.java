@@ -115,4 +115,17 @@ public class PlayerTests {
         assertEquals(0, player.makeAttack(1, 4));
         assertEquals(0, player.makeAttack(1, 5));
     }
+
+    @Test
+    void hasLostTest() {
+        assertEquals(false, player.hasLost());
+        player.addShip(0, 0, 'h', 3);
+        assertEquals(false, player.hasLost());
+        player.makeAttack(0,0);
+        assertEquals(false, player.hasLost());
+        player.makeAttack(0,1);
+        assertEquals(false, player.hasLost());
+        player.makeAttack(0,2);
+        assertEquals(true, player.hasLost());
+    }
 }
