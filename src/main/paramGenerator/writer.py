@@ -94,6 +94,15 @@ def generateSunk():
             sunk.write("arguments(" + str(10 - i) + ", 9, 'v', " + str(i) + "), ")
     sunk.close()
 
+def generateMockPositions():
+    with open('outputs_txt/randomMockPositions.txt', 'w') as rp:
+        for i in range(0, 10):
+            for j in range(0, 10):
+                rp.write("arguments(" + str(i) + ", " + str(j) + ", 'h'), ")
+                rp.write("arguments(" + str(i) + ", " + str(j) + ", 'v'), ")
+    rp.close()
+
+generateMockPositions()
 generateSunk()
 generateCollisions()
 generateBoundaries()
