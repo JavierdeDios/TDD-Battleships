@@ -15,4 +15,9 @@ public class Player {
     }
 
     public int getM_NshipsAlive() { return this.m_NshipsAlive; }
+    public Ship[] getM_arrayShip() { return this.m_arrayShip; }
+
+    public boolean addShip(int x, int y, char orientation, int length) {
+        return false;
+    }
 }
