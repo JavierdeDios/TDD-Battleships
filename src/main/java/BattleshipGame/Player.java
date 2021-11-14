@@ -33,7 +33,11 @@ public class Player {
         return false;
     }
 
-    public int makeAttack() {
+    public int makeAttack(int x, int y) {
+        /*if (this.m_board.attackPoint(x, y) == 1) {
+
+        }
+        return this.m_board.attackPoint(x, y);*/
         return 0;
     }
 

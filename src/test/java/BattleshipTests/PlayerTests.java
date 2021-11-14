@@ -46,6 +46,22 @@ public class PlayerTests {
     }
 
     @Test
+    void findShipTest() {
+        assertEquals(true, player.addShip(0, 0, 'h', 5)); //0
+        assertEquals(true, player.addShip(1, 0, 'h', 5)); //1
+        assertEquals(true, player.addShip(2, 0, 'v', 5)); //2
+        assertEquals(true, player.addShip(2, 1, 'h', 5)); //3
+        assertEquals(true, player.addShip(3, 2, 'v', 5)); //4
+
+
+        assertEquals(0, player.findShip(0, 1));
+        assertEquals(1, player.findShip(1, 2));
+        assertEquals(2, player.findShip(2, 0));
+        assertEquals(3, player.findShip(2, 1));
+        assertEquals(4, player.findShip(3, 2));
+    }
+
+    @Test
     void makeAttackTest() {
         player.addShip(0, 0, 'h', 5);
         assertEquals(1, player.makeAttack(0, 0)); //Tocat
