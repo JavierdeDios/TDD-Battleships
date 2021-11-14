@@ -7,7 +7,6 @@ import java.util.*;
 public class Player {
     private Gameboard m_board;
     private int m_NshipsAlive;
-    //private Ship m_arrayShips[];
     private ArrayList<Ship> m_arrayShips;
 
     public Player() {
@@ -34,5 +33,8 @@ public class Player {
         return false;
     }
 
+    public int makeAttack() {
+        return 0;
+    }
 
 }

@@ -11,6 +11,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerTests {
@@ -44,4 +45,30 @@ public class PlayerTests {
         }
     }
 
+    @Test
+    void makeAttackTest() {
+        player.addShip(0, 0, 'h', 5);
+        assertEquals(1, player.makeAttack(0, 0)); //Tocat
+        assertEquals(1, player.getM_NshipsAlive());
+        assertEquals(1, player.makeAttack(0, 1));
+        assertEquals(1, player.getM_NshipsAlive());
+        assertEquals(1, player.makeAttack(0, 2));
+        assertEquals(1, player.getM_NshipsAlive());
+        assertEquals(1, player.makeAttack(0, 3));
+        assertEquals(1, player.getM_NshipsAlive());
+        assertEquals(1, player.makeAttack(0, 4));
+        assertEquals(0, player.getM_NshipsAlive());
+
+        assertEquals(0, player.makeAttack(0, 5)); //Aigua
+        assertEquals(-1, player.makeAttack(0, 5)); //Ja atacat
+
+        assertEquals(-1, player.makeAttack(0, 0));
+        assertEquals(0, player.makeAttack(1, 0));
+        assertEquals(0, player.makeAttack(1, 1));
+        assertEquals(0, player.makeAttack(1, 2));
+        assertEquals(0, player.makeAttack(1, 3));
+        assertEquals(0, player.makeAttack(1, 4));
+        assertEquals(0, player.makeAttack(1, 5));
+
+    }
 }
