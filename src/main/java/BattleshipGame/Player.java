@@ -57,4 +57,10 @@ public class Player {
         return resultat;
     }
 
+    public boolean hasLost() {
+        if (!this.getM_arrayShip().isEmpty() && this.getM_NshipsAlive() == 0) {
+            return true;
+        }
+        return false;
+    }
 }
