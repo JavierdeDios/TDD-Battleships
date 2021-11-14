@@ -1,6 +1,8 @@
 package BattleshipTests;
 
+import BattleshipGame.Gameboard;
 import BattleshipGame.Player;
+import BattleshipGame.Ship;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,13 +16,14 @@ public class PlayerTests {
         player = new Player();
     }
 
-    /*@Test
+    @Test
     void setPlayerTest() {
-        assertEquals(0, player.getM_shipsAlive());
+        Gameboard tauler = new Gameboard();
+
+        assertEquals(tauler, player.m_board);
+        assertEquals(0, player.m_NshipsAlive);
+        assertEquals( new Ship[5], player.m_arrayShips);
     }
 
-    @Test
-    void setShipTest() {
-        
-    }*/
+    
 }
