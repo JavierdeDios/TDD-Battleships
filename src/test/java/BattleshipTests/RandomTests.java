@@ -4,6 +4,7 @@ import BattleshipGame.Model.Random;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.*;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -21,8 +22,13 @@ public class RandomTests {
 
     }
 
-    /*@Test
-    void getMockXYOrientationTest() {
-
-    }*/
+    @ParameterizedTest
+    @MethodSource(value = "BattleshipTests.ParamProvider#sourceMockPositions")
+    void getMockXYOrientationTest(int x, int y, char orientation) {
+        RandomMock rand = new RandomMock();
+        rand.setParameters(x, y, orientation);
+        assertEquals(x, rand.getRandomX());
+        assertEquals(y, rand.getRandomY());
+        assertEquals(orientation, rand.getRandomOrientation());
+    }
 }
