@@ -8,18 +8,24 @@ public class Random implements IRandom {
 
     @Override
     public int getRandomX() {
-        return 0;
+        return this.randomX;
     }
 
     @Override
     public int getRandomY() {
-        return 0;
+        return this.randomY;
     }
 
     @Override
     public char getRandomOrientation() {
-        return 'v';
+        return this.randomOrientation;
     }
 
+    public void generateValues() {
+        java.util.Random rand = new java.util.Random();
+        this.randomX = rand.nextInt(10);
+        this.randomY = rand.nextInt(10);
+        this.randomOrientation = rand.nextInt(101) < 51 ? 'h' : 'v';
+    }
 
 }

@@ -12,7 +12,6 @@ public class RandomTests {
     @Test
     void getRandomXYOrientationTest() {
         Random rand = new Random();
-
         for(int i = 0; i < 25; i++) {
             rand.generateValues();
             assertEquals(true, (rand.getRandomX() < 10 && rand.getRandomX() >= 0));
@@ -21,4 +20,9 @@ public class RandomTests {
         }
 
     }
+
+    /*@Test
+    void getMockXYOrientationTest() {
+
+    }*/
 }
