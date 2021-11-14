@@ -30,5 +30,11 @@ public class Ship {
     public char getM_orientation() { return m_orientation; }
     public int getM_length() { return m_length; }
 
-
+    public boolean isThisShip(int x, int y) {
+        if (this.m_orientation == 'h') {
+            return ((this.m_x == x) && (y >= this.m_y) && (y < (this.m_y + this.m_length)));
+        } else {
+            return ((this.m_y == y) && (x >= this.m_x) && (x < (this.m_x + this.m_length)));
+        }
+    }
 }
