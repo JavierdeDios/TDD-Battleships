@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerTests {
@@ -31,14 +33,14 @@ public class PlayerTests {
         assertEquals(result, player.addShip(x, y, orientation, length));
         assertEquals(intRes, player.getM_NshipsAlive());
         if (result) {
-            Ship[] ships = player.getM_arrayShip();
-            assertEquals(x, ships[0].getM_x());
-            assertEquals(y, ships[0].getM_y());
-            assertEquals(orientation, ships[0].getM_orientation());
-            assertEquals(length, ships[0].getM_length());
+            ArrayList<Ship> ships = player.getM_arrayShip();
+            assertEquals(x, ships.get(0).getM_x());
+            assertEquals(y, ships.get(0).getM_y());
+            assertEquals(orientation, ships.get(0).getM_orientation());
+            assertEquals(length, ships.get(0).getM_length());
         } else {
-            Ship[] ships = player.getM_arrayShip();
-            assertEquals(null, ships[0]);
+            ArrayList<Ship> ships = player.getM_arrayShip();
+            assertEquals(true, ships.isEmpty());
         }
     }
 

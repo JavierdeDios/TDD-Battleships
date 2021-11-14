@@ -2,33 +2,37 @@ package BattleshipGame;
 
 import BattleshipGame.Gameboard;
 import BattleshipGame.Ship;
+import java.util.*;
 
 public class Player {
     private Gameboard m_board;
     private int m_NshipsAlive;
-    private Ship m_arrayShip[];
+    //private Ship m_arrayShips[];
+    private ArrayList<Ship> m_arrayShips;
 
     public Player() {
         this.m_board = new Gameboard();
         this.m_NshipsAlive = 0;
-        this.m_arrayShip = new Ship[5];
+        this.m_arrayShips = new ArrayList<Ship>();
     }
 
     public int getM_NshipsAlive() { return this.m_NshipsAlive; }
-    public Ship[] getM_arrayShip() { return this.m_arrayShip; }
+    public ArrayList<Ship> getM_arrayShip() { return this.m_arrayShips; }
 
     public void addNshipsAlive() { this.m_NshipsAlive++; }
     public void decNshipsAlive() { this.m_NshipsAlive--; }
 
-    public void addShipArray(int i, Ship ship) { this.m_arrayShip[i] = ship; }
+    public void addShipArray(Ship ship) { this.m_arrayShips.add(ship); }
 
     public boolean addShip(int x, int y, char orientation, int length) {
         if (m_board.placeShip(x, y, orientation, length)) {
             Ship ship = new Ship(x, y, orientation, length);
-            this.addShipArray(this.getM_NshipsAlive(), ship);
+            this.addShipArray(ship);
             this.addNshipsAlive();
             return true;
         }
         return false;
     }
+
+
 }
