@@ -20,10 +20,10 @@ public class PlayerTests {
     void setPlayerTest() {
         Gameboard tauler = new Gameboard();
 
-        assertEquals(tauler, player.m_board);
-        assertEquals(0, player.m_NshipsAlive);
-        assertEquals( new Ship[5], player.m_arrayShips);
+        assertEquals(tauler, player.getM_board());
+        assertEquals(0, player.getM_NshipsAlive());
+        assertEquals( new Ship[5], player.getM_arrayShips());
     }
 
-    
+
 }
