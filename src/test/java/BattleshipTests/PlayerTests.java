@@ -18,12 +18,7 @@ public class PlayerTests {
 
     @Test
     void setPlayerTest() {
-        Gameboard tauler = new Gameboard();
-
-        assertEquals(tauler, player.getM_board());
         assertEquals(0, player.getM_NshipsAlive());
-        assertEquals( new Ship[5], player.getM_arrayShips());
     }
-
 
 }
