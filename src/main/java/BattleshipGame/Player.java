@@ -17,7 +17,18 @@ public class Player {
     public int getM_NshipsAlive() { return this.m_NshipsAlive; }
     public Ship[] getM_arrayShip() { return this.m_arrayShip; }
 
+    public void addNshipsAlive() { this.m_NshipsAlive++; }
+    public void decNshipsAlive() { this.m_NshipsAlive--; }
+
+    public void addShipArray(int i, Ship ship) { this.m_arrayShip[i] = ship; }
+
     public boolean addShip(int x, int y, char orientation, int length) {
+        if (m_board.placeShip(x, y, orientation, length)) {
+            Ship ship = new Ship(x, y, orientation, length);
+            this.addShipArray(this.getM_NshipsAlive(), ship);
+            this.addNshipsAlive();
+            return true;
+        }
         return false;
     }
 }
