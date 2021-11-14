@@ -1,5 +1,4 @@
-package BattleshipGame;
-import BattleshipGame.Cell;
+package BattleshipGame.Controlador;
 
 public class Gameboard {
     private Cell[][] board;

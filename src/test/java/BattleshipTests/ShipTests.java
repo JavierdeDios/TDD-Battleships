@@ -1,6 +1,6 @@
 package BattleshipTests;
 
-import BattleshipGame.Ship;
+import BattleshipGame.Controlador.Ship;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;

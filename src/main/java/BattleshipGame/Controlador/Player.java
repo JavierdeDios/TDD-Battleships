@@ -1,7 +1,5 @@
-package BattleshipGame;
+package BattleshipGame.Controlador;
 
-import BattleshipGame.Gameboard;
-import BattleshipGame.Ship;
 import java.util.*;
 
 public class Player {

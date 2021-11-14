@@ -1,4 +1,4 @@
-package BattleshipGame;
+package BattleshipGame.Controlador;
 
 public class Ship {
     private int m_x;

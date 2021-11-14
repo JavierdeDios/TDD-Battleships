@@ -1,6 +1,6 @@
 package BattleshipTests;
 
-import BattleshipGame.Cell;
+import BattleshipGame.Controlador.Cell;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;

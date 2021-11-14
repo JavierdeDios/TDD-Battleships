@@ -1,8 +1,7 @@
 package BattleshipTests;
 
-import BattleshipGame.Gameboard;
-import BattleshipGame.Player;
-import BattleshipGame.Ship;
+import BattleshipGame.Controlador.Player;
+import BattleshipGame.Controlador.Ship;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,7 +10,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerTests {

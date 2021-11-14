@@ -1,4 +1,4 @@
-package BattleshipGame;
+package BattleshipGame.Controlador;
 
 public class Cell {
     private int m_value;

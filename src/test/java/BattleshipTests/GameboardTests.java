@@ -1,12 +1,10 @@
 package BattleshipTests;
 
-import BattleshipGame.Gameboard;
-import BattleshipGame.Cell;
+import BattleshipGame.Controlador.Gameboard;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
