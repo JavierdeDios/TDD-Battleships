@@ -22,6 +22,7 @@ public class ShipTests {
         assertEquals(-1, ship.getM_y());
         assertEquals(' ', ship.getM_orientation());
         assertEquals(0, ship.getM_length());
+        assertEquals(false, ship.getM_sunk());
     }
 
     @ParameterizedTest
