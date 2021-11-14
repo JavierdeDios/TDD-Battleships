@@ -54,11 +54,40 @@ public class PlayerTests {
         assertEquals(true, player.addShip(3, 2, 'v', 5)); //4
 
 
+        assertEquals(0, player.findShip(0, 0));
         assertEquals(0, player.findShip(0, 1));
+        assertEquals(0, player.findShip(0, 2));
+        assertEquals(0, player.findShip(0, 3));
+        assertEquals(0, player.findShip(0, 4));
+        assertEquals(-1, player.findShip(0, 5));
+
+        assertEquals(1, player.findShip(1, 0));
+        assertEquals(1, player.findShip(1, 1));
         assertEquals(1, player.findShip(1, 2));
+        assertEquals(1, player.findShip(1, 3));
+        assertEquals(1, player.findShip(1, 4));
+        assertEquals(-1, player.findShip(1, 5));
+
         assertEquals(2, player.findShip(2, 0));
+        assertEquals(2, player.findShip(3, 0));
+        assertEquals(2, player.findShip(4, 0));
+        assertEquals(2, player.findShip(5, 0));
+        assertEquals(2, player.findShip(6, 0));
+        assertEquals(-1, player.findShip(7, 0));
+
         assertEquals(3, player.findShip(2, 1));
+        assertEquals(3, player.findShip(2, 2));
+        assertEquals(3, player.findShip(2, 3));
+        assertEquals(3, player.findShip(2, 4));
+        assertEquals(3, player.findShip(2, 5));
+        assertEquals(-1, player.findShip(2, 6));
+
         assertEquals(4, player.findShip(3, 2));
+        assertEquals(4, player.findShip(4, 2));
+        assertEquals(4, player.findShip(5, 2));
+        assertEquals(4, player.findShip(6, 2));
+        assertEquals(4, player.findShip(7, 2));
+        assertEquals(-1, player.findShip(8, 2));
     }
 
     @Test
@@ -85,6 +114,5 @@ public class PlayerTests {
         assertEquals(0, player.makeAttack(1, 3));
         assertEquals(0, player.makeAttack(1, 4));
         assertEquals(0, player.makeAttack(1, 5));
-
     }
 }

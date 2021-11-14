@@ -33,12 +33,28 @@ public class Player {
         return false;
     }
 
-    public int makeAttack(int x, int y) {
-        /*if (this.m_board.attackPoint(x, y) == 1) {
-
+    public int findShip(int x, int y) {
+        ArrayList<Ship> ships = this.getM_arrayShip();
+        for(int i = 0; i < this.getM_NshipsAlive(); i++) {
+            if (ships.get(i).isThisShip(x, y)) {
+                return i;
+            }
         }
-        return this.m_board.attackPoint(x, y);*/
-        return 0;
+        return -1;
+    }
+
+    public int makeAttack(int x, int y) {
+        int resultat = this.m_board.attackPoint(x, y);
+        if (resultat == 1) {
+            int shipHit = this.findShip(x, y);
+            Ship ship = this.getM_arrayShip().get(shipHit);
+            if(this.m_board.isSunk(ship.getM_x(), ship.getM_y(), ship.getM_orientation(), ship.getM_length())) {
+                ship.setM_sunk();
+                this.m_arrayShips.set(shipHit, ship);
+                this.decNshipsAlive();
+            }
+        }
+        return resultat;
     }
 
 }
