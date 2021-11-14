@@ -29,4 +29,6 @@ public class Ship {
     public int getM_y() { return m_y; }
     public char getM_orientation() { return m_orientation; }
     public int getM_length() { return m_length; }
+
+
 }

@@ -77,4 +77,32 @@ public class ShipTests {
         assertEquals('v', ship.getM_orientation());
         assertEquals(2, ship.getM_length());
     }
+
+    @Test
+    void isThisShipTest() {
+        ship = new Ship(0, 0, 'h', 5);
+        assertEquals(true, ship.isThisShip(0, 0));
+        assertEquals(true, ship.isThisShip(0, 1));
+        assertEquals(true, ship.isThisShip(0, 2));
+        assertEquals(true, ship.isThisShip(0, 3));
+        assertEquals(true, ship.isThisShip(0, 4));
+        assertEquals(false, ship.isThisShip(0, 5));
+        assertEquals(false, ship.isThisShip(1, 0));
+        assertEquals(false, ship.isThisShip(1, 1));
+        assertEquals(false, ship.isThisShip(1, 2));
+        assertEquals(false, ship.isThisShip(1, 3));
+        assertEquals(false, ship.isThisShip(1, 4));
+
+        ship = new Ship(0, 0, 'v', 5);
+        assertEquals(true, ship.isThisShip(0, 0));
+        assertEquals(true, ship.isThisShip(1, 0));
+        assertEquals(true, ship.isThisShip(2, 0));
+        assertEquals(true, ship.isThisShip(3, 0));
+        assertEquals(true, ship.isThisShip(4, 0));
+        assertEquals(false, ship.isThisShip(5, 0));
+        assertEquals(false, ship.isThisShip(0, 1));
+        assertEquals(false, ship.isThisShip(0, 2));
+        assertEquals(false, ship.isThisShip(0, 3));
+        assertEquals(false, ship.isThisShip(0, 4));
+    }
 }
