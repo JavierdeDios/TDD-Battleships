@@ -16,16 +16,19 @@ public class PlayerTests {
     Player player;
 
     @BeforeEach
+    //set up player
     void setUpPlayer() {
         player = new Player();
     }
 
     @Test
+    //test caixa negra constructor de classe
     void setPlayerTest() {
         assertEquals(0, player.getM_NshipsAlive());
     }
 
     @ParameterizedTest
+    //test caixa negra amb particio equivalent i valors frontera. Comprova que s'afegeixen correctament vaixells al llistat del vaixells del jugador
     @MethodSource(value = "BattleshipTests.ParamProvider#sourcePlaceShip")
     void addShipTest(int x, int y, char orientation, int length, boolean result) {
         int intRes = result ? 1 : 0;
@@ -44,13 +47,13 @@ public class PlayerTests {
     }
 
     @Test
+    //test caixa negra i caixa blanca amb particio equivalent, valors frontera i loop testing. Comprova que un vaixell donat, existeix
     void findShipTest() {
         assertEquals(true, player.addShip(0, 0, 'h', 5)); //0
         assertEquals(true, player.addShip(1, 0, 'h', 5)); //1
         assertEquals(true, player.addShip(2, 0, 'v', 5)); //2
         assertEquals(true, player.addShip(2, 1, 'h', 5)); //3
         assertEquals(true, player.addShip(3, 2, 'v', 5)); //4
-
 
         assertEquals(0, player.findShip(0, 0));
         assertEquals(0, player.findShip(0, 1));
@@ -89,6 +92,7 @@ public class PlayerTests {
     }
 
     @Test
+    //Test caixa negra amb particio equivalent i valors frontera. Comprova si un atac es exitos o no
     void makeAttackTest() {
         player.addShip(0, 0, 'h', 5);
         assertEquals(1, player.makeAttack(0, 0)); //Tocat
@@ -115,6 +119,7 @@ public class PlayerTests {
     }
 
     @Test
+    //test caixa negra amb particio equivalent i valors frontera. Comprova si el jugador te vaixells vius o no i per tant si ha perdut o no
     void hasLostTest() {
         assertEquals(false, player.hasLost());
         player.addShip(0, 0, 'h', 3);

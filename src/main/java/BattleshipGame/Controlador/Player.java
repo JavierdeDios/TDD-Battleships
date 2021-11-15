@@ -3,23 +3,23 @@ package BattleshipGame.Controlador;
 import java.util.*;
 
 public class Player {
-    private Gameboard m_board;
-    private int m_NshipsAlive;
-    private ArrayList<Ship> m_arrayShips;
+    private Gameboard m_board; //tauler del jugador
+    private int m_NshipsAlive; //nombre de vaixells vius dels que disposa el jugador
+    private ArrayList<Ship> m_arrayShips; // llistat de vaixells disponibles del jugador
 
-    public Player() {
+    public Player() { // constructor per defecte
         this.m_board = new Gameboard();
         this.m_NshipsAlive = 0;
         this.m_arrayShips = new ArrayList<Ship>();
     }
 
-    public int getM_NshipsAlive() { return this.m_NshipsAlive; }
-    public ArrayList<Ship> getM_arrayShip() { return this.m_arrayShips; }
+    public int getM_NshipsAlive() { return this.m_NshipsAlive; } //getter nombre de vaixells vius
+    public ArrayList<Ship> getM_arrayShip() { return this.m_arrayShips; } //getter llistat de vaixells vius
 
-    public void addNshipsAlive() { this.m_NshipsAlive++; }
-    public void decNshipsAlive() { this.m_NshipsAlive--; }
+    public void addNshipsAlive() { this.m_NshipsAlive++; } //incrementa nombre de vaixells vius
+    public void decNshipsAlive() { this.m_NshipsAlive--; } //decrementa nombre de vaixells vius
 
-    public void addShipArray(Ship ship) { this.m_arrayShips.add(ship); }
+    public void addShipArray(Ship ship) { this.m_arrayShips.add(ship); } //afegeix el vaixell Ship a la llista de vaixells
 
     public boolean addShip(int x, int y, char orientation, int length) {
         if (m_board.placeShip(x, y, orientation, length)) {
