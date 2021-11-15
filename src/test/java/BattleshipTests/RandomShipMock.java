@@ -25,14 +25,31 @@ public class RandomShipMock implements IRandomShip {
 
     @Override
     public int getRandomX() {
-        return this.positionsXQueue.poll();
+        while (true) {
+            int val = this.positionsXQueue.poll();
+            if (val < 10 && val >= 0) {
+                return val;
+            }
+        }
     }
 
     @Override
     public int getRandomY() {
-        return this.positionsYQueue.poll();
+        while (true) {
+            int val = this.positionsYQueue.poll();
+            if (val < 10 && val >= 0) {
+                return val;
+            }
+        }
     }
 
     @Override
-    public char getRandomOrientation() { return this.orientationsQueue.poll(); }
+    public char getRandomOrientation() {
+        while (true) {
+            char val = this.orientationsQueue.poll();
+            if (val == 'h' || val == 'v') {
+                return val;
+            }
+        }
+    }
 }

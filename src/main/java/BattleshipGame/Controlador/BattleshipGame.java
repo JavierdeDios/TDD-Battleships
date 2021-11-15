@@ -157,7 +157,8 @@ public class BattleshipGame {
 
 
     public static void mainMock(String[] args, IUserInputs user, IRandomShip rand) throws InterruptedException, IOException {
-        
+
+
     }
 
 }
