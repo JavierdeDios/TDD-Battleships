@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Queue;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RandomShipTests {
@@ -19,16 +21,5 @@ public class RandomShipTests {
             char k = rand.getRandomOrientation();
             assertEquals(true, k == 'h' || k == 'v');
         }
-
     }
-    /*
-    @ParameterizedTest
-    @MethodSource(value = "BattleshipTests.ParamProvider#sourceMockPositions")
-    void getMockXYOrientationTest(int x, int y, char orientation) {
-        RandomShipMock rand = new RandomShipMock();
-        rand.setParameters(x, y, orientation);
-        assertEquals(x, rand.getRandomX());
-        assertEquals(y, rand.getRandomY());
-        assertEquals(orientation, rand.getRandomOrientation());
-    }*/
 }
