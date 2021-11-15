@@ -53,8 +53,19 @@ public class UserInputsTest {
     }
 
     @ParameterizedTest
+    @ValueSource(ints = {2, 3, 4, 5})
+    void getUserShipLengthTest(int i) {
+        Queue<Integer> q = new LinkedList<>();
+        user.setuserLengthQueue(q);
+        q.add(-1); q.add(0); q.add(1); q.add(i);
+        assertEquals(i, user.getUserShipLength());
+        q.add(10); q.add(6); q.add(i);
+        assertEquals(i, user.getUserShipLength());
+    }
+
+    @ParameterizedTest
     @ValueSource(chars = {'v', 'h'})
-    void getUserShipYTest(char i) {
+    void getUserShipOrientationTest(char i) {
         Queue<Character> q = new LinkedList<>();
         user.setuserShipOrientationQueue(q);
         q.add('k'); q.add('l'); q.add('V'); q.add(i);

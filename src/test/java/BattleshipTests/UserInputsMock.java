@@ -6,21 +6,12 @@ import java.util.Queue;
 
 public class UserInputsMock implements IUserInputs {
 
-    int userShipX;
-    int userShipY;
-    char userShipOrientation;
-    int userNumberOfShips;
 
     Queue<Integer> userShipXQueue;
     Queue<Integer> userShipYQueue;
     Queue<Character> userShipOrientationQueue;
     Queue<Integer> userNumberOfShipsQueue;
-
-    void setParameters(int x, int y, char orientation) {
-        this.userShipOrientation = orientation;
-        this.userShipX = x;
-        this.userShipY = y;
-    }
+    Queue<Integer> userLengthOfShipsQueue;
 
     void setNumberOfShipsQueue(Queue<Integer> q) {
         this.userNumberOfShipsQueue = q;
@@ -28,6 +19,7 @@ public class UserInputsMock implements IUserInputs {
     void setuserShipXQueue(Queue<Integer> q) { this.userShipXQueue = q; }
     void setuserShipYQueue(Queue<Integer> q) { this.userShipYQueue = q; }
     void setuserShipOrientationQueue(Queue<Character> q) { this.userShipOrientationQueue = q; }
+    void setuserLengthQueue(Queue<Integer> q) { this.userLengthOfShipsQueue = q;}
 
     @Override
     public int getUserShipX() {
@@ -88,5 +80,21 @@ public class UserInputsMock implements IUserInputs {
             }
         }
     };
+
+    @Override
+    public int getUserShipLength() {
+        while (true) {
+            int i = userLengthOfShipsQueue.poll();
+            if (i >= 2 && i < 6) {
+                return i;
+            } else {
+                if (i < 2) {
+                    System.out.println("Numero introduit menor a 1. Torna-ho a intentar.");
+                } else {
+                    System.out.println("Numero introduit mes gran que 9. Torna-ho a intentar.");
+                }
+            }
+        }
+    }
 
 }

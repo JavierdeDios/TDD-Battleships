@@ -98,4 +98,25 @@ public class UserInputs implements IUserInputs {
         }
     }
 
+    @Override
+    public int getUserShipLength() {
+        while (true) {
+            int i = -1;
+            try {
+                i = scan.nextInt();
+                if (i >= 2 && i < 6) {
+                    return i;
+                } else {
+                    if (i < 2) {
+                        System.out.println("Quin vaixell mes curt ha de medir mes de 2. Torna-ho a intentar.");
+                    } else {
+                        System.out.println("Aquest vaixell es massa gran, ha de medir menys de 5 Torna-ho a intentar.");
+                    }
+                }
+            } catch (Exception E) {
+                scan.nextLine();
+                System.out.println("No es un digit. Torna-ho a intentar.");
+            }
+        }
+    }
 }

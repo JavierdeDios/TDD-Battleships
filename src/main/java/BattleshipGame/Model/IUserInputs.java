@@ -5,4 +5,5 @@ public interface IUserInputs {
     int getUserShipY();
     char getUserShipOrientation();
     int getNumberOfShips();
+    int getUserShipLength();
 }
