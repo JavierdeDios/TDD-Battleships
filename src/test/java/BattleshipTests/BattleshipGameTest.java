@@ -195,6 +195,5 @@ public class BattleshipGameTest {
         rY.add(0); rY.add(0); rY.add(0); rY.add(0); rY.add(0);
         BattleshipGame game = new BattleshipGame();
         game.mainMock(user, rand);
-
     }
 }

@@ -2,8 +2,6 @@ package BattleshipGame.Controlador;
 
 import BattleshipGame.Model.*;
 
-import java.io.IOException;
-
 
 public class BattleshipGame {
 
@@ -146,7 +144,12 @@ public class BattleshipGame {
                 }
             }
         }
-
     }
 
+    public void PlayGame() {
+        UserInputs user = new UserInputs();
+        RandomShip rand = new RandomShip();
+
+        this.mainMock(user, rand);
+    }
 }
