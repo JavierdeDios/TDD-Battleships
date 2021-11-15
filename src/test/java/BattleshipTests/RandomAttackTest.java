@@ -16,7 +16,6 @@ public class RandomAttackTest {
             assertEquals(true, (rand.getRandomAttackX() < 10 && rand.getRandomAttackX() >= 0));
             assertEquals(true, (rand.getRandomAttackY() < 10 && rand.getRandomAttackY() >= 0));
         }
-
     }
 
     @ParameterizedTest
