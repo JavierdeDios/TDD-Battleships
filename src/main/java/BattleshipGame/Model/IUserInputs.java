@@ -1,7 +1,8 @@
 package BattleshipGame.Model;
 
-public interface IUserInputsShip {
+public interface IUserInputs {
     int getUserShipX();
     int getUserShipY();
     char getUserShipOrientation();
+    int getNumberOfShips();
 }
