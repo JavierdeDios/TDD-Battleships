@@ -60,7 +60,7 @@ public class BattleshipGameTest {
         // AFEGIM ORIENTACIONS (NOMÉS ACCEPTA 'h' O 'v')
         uOr.add('3'); uOr.add('K'); uOr.add('H'); uOr.add('h'); uOr.add('V'); uOr.add('h');
 
-        
+
     }
 
 }
