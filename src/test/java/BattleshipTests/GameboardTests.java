@@ -11,14 +11,15 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameboardTests {
-
     Gameboard tauler;
 
     @BeforeEach
+    //set up gameboard
     void setUpGameboard() {
         tauler = new Gameboard();
     }
 
+    //test caixa negra setters i getters
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 9})
     void SetterGetterCellValueTest(int i) {
@@ -26,6 +27,7 @@ public class GameboardTests {
         assertEquals(i, tauler.getCellValue(i, i));
     }
 
+    //test caixa negra canvi de valor de show
     @Test
     void SwitchShowCellTest() {
         tauler.showCell(0, 0);
@@ -33,20 +35,21 @@ public class GameboardTests {
         assertEquals(false, tauler.getCellShow(0, 1));
     }
 
-    //Pairwise test per a totes les longituds de vaixells.
+    //Test caixa negra, blanca amb pairwise, decision, condicion i path coverage. Comprova que vaixells de diferentes mides es col.loquen correctament
     @ParameterizedTest
     @MethodSource(value = "BattleshipTests.ParamProvider#sourcePlaceShip")
     void PlaceShipTest(int x, int y, char orientation, int len, boolean resultat) {
         assertEquals(resultat, tauler.placeShip(x, y, orientation, len));
     }
 
-
+    //Test caixa negra, blanca amb valors frontera, decision, condicion i path coverage. Comprova que vaixells de diferentes mides es col.loquen correctament a les vores del tauler
     @ParameterizedTest
     @MethodSource(value = "BattleshipTests.ParamProvider#sourcePlaceShipBoundaries")
     void PlaceShipBoundariesTest(int x, int y, char orientation, int len, boolean resultat) {
         assertEquals(resultat, tauler.placeShip(x, y, orientation, len));
     }
 
+    //Test caixa negra, amb valors frontera i particio equivalent. Comprova que col.lisions hortizontals
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
     void PlaceShipHorizontalCollisionTest(int i) {
@@ -54,6 +57,7 @@ public class GameboardTests {
         assertEquals(i>=5, tauler.placeShip(0, 0, 'h', 5));
     }
 
+    //Test caixa negra, amb valors frontera i particio equivalent. Comprova que col.lisions verticals
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
     void PlaceShipVerticalCollisionTest(int i) {
@@ -61,7 +65,7 @@ public class GameboardTests {
         assertEquals(i>=5, tauler.placeShip(0, 0, 'v', 5));
     }
 
-    // Tests funcio placeShip que testejen l'inserció
+    //Test caixa negra, amb valors frontera i particio equivalent. Comprova que vaixells hortizontals es col.loquen correctament
     @ParameterizedTest
     @MethodSource(value = "BattleshipTests.ParamProvider#sourcePlaceShipHorizontal")
     void PlaceShipPlacementHorizontalTest(int x, int y, int length, boolean result) {
@@ -82,6 +86,7 @@ public class GameboardTests {
         }
     }
 
+    //Test caixa negra, amb valors frontera i particio equivalent. Comprova que vaixells verticals es col.loquen correctament
     @ParameterizedTest
     @MethodSource(value = "BattleshipTests.ParamProvider#sourcePlaceShipVertical")
     void PlaceShipPlacementVerticalTest(int x, int y, int length, boolean result) {
@@ -102,6 +107,7 @@ public class GameboardTests {
         }
     }
 
+    //Test caixa negra, amb valors frontera i particio equivalent. Comprova que col.lisions entre vaixells
     @ParameterizedTest
     @MethodSource(value = "BattleshipTests.ParamProvider#sourcePlaceShipCollision")
     void PlaceShipPlacementShipCollisionTest(int x, int y, char orientation, int length, boolean result) {
@@ -114,6 +120,7 @@ public class GameboardTests {
         assertEquals(result, tauler.placeShip(x, y, orientation, length));
     }
 
+    //Test caixa negra amb particio equivalent i test de valors frontera. Comprova que es registren atacs correctament a diferents punts del tauler
     @Test
     void attackPointTest() {
         tauler.setCellValue(0,1, 1);
@@ -135,6 +142,7 @@ public class GameboardTests {
         assertEquals(-1, tauler.attackPoint(4, 0)); //Ja mostrat
     }
 
+    //Test caixa negra amb particio equivalent i test de valors frontera. Comprova si el vaixell s'enfonsa correctament
     @ParameterizedTest
     @MethodSource(value = "BattleshipTests.ParamProvider#sourceSunkShip")
     void isSunkTest(int x, int y, char orientation, int length) {
