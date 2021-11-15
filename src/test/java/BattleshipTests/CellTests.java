@@ -13,19 +13,23 @@ public class CellTests {
     Cell cell;
 
     @BeforeEach
+    //setup de la cell
     void setUpCell() {
         cell = new Cell();
     }
 
+    //Test caixa negra pel constructor de la classe
     @Test
     void SetCellTest() {
         assertEquals(0, cell.getM_value());
         assertEquals(false, cell.getM_show());
     }
 
+    //Tests caixa negra dels setters i getters de la classe cell
     @ParameterizedTest
+    //Test amb possibles valors per la variable value
     @ValueSource(ints = {0, 1, 2, 3})
-    void SetterGetterValueTest(int i) { //Test possible values in variable value from class cell
+    void SetterGetterValueTest(int i) {
         cell.setM_value(i);
         assertEquals(i, cell.getM_value());
 
@@ -34,7 +38,8 @@ public class CellTests {
     }
 
     @Test
-    void SetterGetterShowTest() { //Test possible values in variable show from class cell, assure that you can switch the value
+    //Test amb possibles valors de la variable show, ens assegurem que el valor es canvia correctament
+    void SetterGetterShowTest() {
         cell.setM_show(true);
         assertEquals(true, cell.getM_show());
 
