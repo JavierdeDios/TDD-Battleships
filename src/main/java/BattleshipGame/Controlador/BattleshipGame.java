@@ -1,9 +1,6 @@
 package BattleshipGame.Controlador;
 
-import BattleshipGame.Model.IRandomAttack;
-import BattleshipGame.Model.IRandomShip;
-import BattleshipGame.Model.IUserInputs;
-import BattleshipGame.Model.UserInputs;
+import BattleshipGame.Model.*;
 
 import java.io.IOException;
 
@@ -19,6 +16,7 @@ public class BattleshipGame {
     public static void main(String[] args) throws InterruptedException, IOException {
 
         UserInputs user = new UserInputs();
+        RandomShip rand = new RandomShip();
         int numShips = 0;
 
         Player jugador = new Player();
@@ -59,7 +57,12 @@ public class BattleshipGame {
             if (jugador.addShip(x, y, orientation, longitud)) {
                 System.out.println("S'ha colocat el vaixell.");
                 System.out.println();
-                //codi de la maquina
+                while (true) {
+                    if(maquina.addShip(rand.getRandomX(), rand.getRandomY(), rand.getRandomOrientation(), longitud)) {
+                        System.out.println("S'ha colocat el vaixell de l'enemic.");
+                        break;
+                    }
+                }
                 i++;
             } else {
                 System.out.println("Sembla que has colocat el vaixell en una posicio incorrecte, torna-ho a intentar.");
