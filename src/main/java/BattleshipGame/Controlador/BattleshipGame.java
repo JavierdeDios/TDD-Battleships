@@ -3,18 +3,14 @@ package BattleshipGame.Controlador;
 import BattleshipGame.Model.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 public class BattleshipGame {
 
-    private IRandomShip randShip;
-    private IUserInputs userShip;
-
     public static void main(String[] args) throws InterruptedException, IOException {
 
-        UserInputs user = new UserInputs();
-        RandomShip rand = new RandomShip();
+        IUserInputs user = new UserInputs();
+        IRandomShip rand = new RandomShip();
 
         int numShips = 0;
         int torn = 0; //comença jugant el jugador.
@@ -156,9 +152,68 @@ public class BattleshipGame {
     }
 
 
-    public static void mainMock(String[] args, IUserInputs user, IRandomShip rand) throws InterruptedException, IOException {
+    public void mainMock(IUserInputs u, IRandomShip r) {
+        IUserInputs user = u;
+        IRandomShip rand = r;
 
+        Player jugador = new Player();
+        Player maquina = new Player();
 
+        int numShips = 0;
+        int torn = 0; //SEMPRE COMENÇA JUGANT EL JUGADOR
+        System.out.println("###################################################################");
+        System.out.println("###								                                ###");
+        System.out.println("###     BENVINGUTS AL JOC  D'ENFONSAR VAIXELLS FINS GUANYAR     ###");
+        System.out.println("###								                                ###");
+        System.out.println("###################################################################");
+        System.out.println();
+        System.out.println("Aquest joc es el tipic 'hundir la flota', per jugar has de seguir els seguents passos: ");
+        System.out.println("    1.  Escollir el numero de vaixells per jugar (1 - 9)");
+        System.out.println("    2.  Posicionar els vaixells un a un");
+        System.out.println("    3.  Començar a atacar l'armada del contrincant");
+        System.out.println("    4.  Guanyar");
+        System.out.println();
+        System.out.println("Vinga a jugar: ");
+        System.out.println();
+        System.out.println("Escull el numero de vaixells (1-9): ");
+        numShips = user.getNumberOfShips();
+        System.out.print("Has escollit jugar amb "); System.out.print(numShips); System.out.println(" vaixells.");
+        System.out.println();
+        System.out.println("Ara toca escollir la longitud de cada vaixell que vols colocar");
+        int i = 1;
+        while (i <= numShips) {
+            int longitud, x, y;
+            char orientation;
+            System.out.print("Quina longitud (2-5) vols que tingui el vaixell numero "); System.out.print(i); System.out.println("?");
+            longitud = user.getUserShipLength();
+            System.out.print("El vaixell numero "); System.out.print(i); System.out.print(" tindra una longitud de "); System.out.println(longitud);
+            while (true) {
+                System.out.println("On el voldras colocar? Selecciona el seu eix X (0 - 9)");
+                x = user.getUserShipX();
+                System.out.println("Quin sera el seu eix Y (0 - 9)?");
+                y = user.getUserShipY();
+                System.out.println("Finalment quina sera la seva orientacio (h / v)?");
+                orientation = user.getUserShipOrientation();
+                if (jugador.addShip(x, y, orientation, longitud)) {
+                    System.out.println("S'ha colocat el vaixell.");
+                    System.out.println();
+                    while (true) {
+                        if (maquina.addShip(rand.getRandomX(), rand.getRandomY(), rand.getRandomOrientation(), longitud)) {
+                            System.out.println("S'ha colocat el vaixell de l'enemic.");
+                            System.out.println();
+                            System.out.println();
+                            break;
+                        }
+                    }
+                    i++;
+                    break;
+                } else {
+                    System.out.println("Sembla que has colocat el vaixell en una posicio incorrecte, torna-ho a intentar.");
+                    System.out.println();
+                    System.out.println();
+                }
+            }
+        }
     }
 
 }
