@@ -17,10 +17,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">BattleshipGame</a>
+    <a href="../index.html">BattleshipGame.Controlador</a>
 </div>
 
-<h1>Coverage Summary for Class: BattleshipGame (BattleshipGame)</h1>
+<h1>Coverage Summary for Class: BattleshipGame (BattleshipGame.Controlador)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -53,7 +53,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/1)
+    (0/2)
   </span>
 </td>
 <td class="coverageStat">
@@ -61,7 +61,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/1)
+    (0/104)
   </span>
 </td>
 </tr>
@@ -73,11 +73,164 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package BattleshipGame;
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package BattleshipGame.Controlador;
 <i class="no-highlight">2</i>&nbsp;
-<b class="nc"><i class="no-highlight">3</i>&nbsp;public class BattleshipGame {</b>
+<i class="no-highlight">3</i>&nbsp;import BattleshipGame.Model.*;
 <i class="no-highlight">4</i>&nbsp;
-<i class="no-highlight">5</i>&nbsp;}
+<i class="no-highlight">5</i>&nbsp;import java.io.IOException;
+<i class="no-highlight">6</i>&nbsp;import java.util.ArrayList;
+<i class="no-highlight">7</i>&nbsp;
+<i class="no-highlight">8</i>&nbsp;
+<b class="nc"><i class="no-highlight">9</i>&nbsp;public class BattleshipGame {</b>
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;    private IRandomShip randShip;
+<i class="no-highlight">12</i>&nbsp;    private IUserInputs userShip;
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;    public static void main(String[] args) throws InterruptedException, IOException {
+<i class="no-highlight">15</i>&nbsp;
+<b class="nc"><i class="no-highlight">16</i>&nbsp;        UserInputs user = new UserInputs();</b>
+<b class="nc"><i class="no-highlight">17</i>&nbsp;        RandomShip rand = new RandomShip();</b>
+<i class="no-highlight">18</i>&nbsp;
+<b class="nc"><i class="no-highlight">19</i>&nbsp;        int numShips = 0;</b>
+<b class="nc"><i class="no-highlight">20</i>&nbsp;        int torn = 0; //comença jugant el jugador.</b>
+<i class="no-highlight">21</i>&nbsp;
+<b class="nc"><i class="no-highlight">22</i>&nbsp;        Player jugador = new Player();</b>
+<b class="nc"><i class="no-highlight">23</i>&nbsp;        Player maquina = new Player();</b>
+<i class="no-highlight">24</i>&nbsp;
+<b class="nc"><i class="no-highlight">25</i>&nbsp;        System.out.println(&quot;###################################################################&quot;);</b>
+<b class="nc"><i class="no-highlight">26</i>&nbsp;        System.out.println(&quot;###								                                ###&quot;);</b>
+<b class="nc"><i class="no-highlight">27</i>&nbsp;        System.out.println(&quot;###     BENVINGUTS AL JOC  D&#39;ENFONSAR VAIXELLS FINS GUANYAR     ###&quot;);</b>
+<b class="nc"><i class="no-highlight">28</i>&nbsp;        System.out.println(&quot;###								                                ###&quot;);</b>
+<b class="nc"><i class="no-highlight">29</i>&nbsp;        System.out.println(&quot;###################################################################&quot;);</b>
+<b class="nc"><i class="no-highlight">30</i>&nbsp;        System.out.println();</b>
+<b class="nc"><i class="no-highlight">31</i>&nbsp;        System.out.println(&quot;Aquest joc es el tipic &#39;hundir la flota&#39;, per jugar has de seguir els seguents passos: &quot;);</b>
+<b class="nc"><i class="no-highlight">32</i>&nbsp;        System.out.println(&quot;    1.  Escollir el numero de vaixells per jugar (1 - 9)&quot;);</b>
+<b class="nc"><i class="no-highlight">33</i>&nbsp;        System.out.println(&quot;    2.  Posicionar els vaixells un a un&quot;);</b>
+<b class="nc"><i class="no-highlight">34</i>&nbsp;        System.out.println(&quot;    3.  Començar a atacar l&#39;armada del contrincant&quot;);</b>
+<b class="nc"><i class="no-highlight">35</i>&nbsp;        System.out.println(&quot;    4.  Guanyar&quot;);</b>
+<b class="nc"><i class="no-highlight">36</i>&nbsp;        System.out.println();</b>
+<b class="nc"><i class="no-highlight">37</i>&nbsp;        System.out.println(&quot;Vinga a jugar: &quot;);</b>
+<b class="nc"><i class="no-highlight">38</i>&nbsp;        System.out.println();</b>
+<b class="nc"><i class="no-highlight">39</i>&nbsp;        System.out.println(&quot;Escull el numero de vaixells (1-9): &quot;);</b>
+<b class="nc"><i class="no-highlight">40</i>&nbsp;        numShips = user.getNumberOfShips();</b>
+<b class="nc"><i class="no-highlight">41</i>&nbsp;        System.out.print(&quot;Has escollit jugar amb &quot;); System.out.print(numShips); System.out.println(&quot; vaixells.&quot;);</b>
+<b class="nc"><i class="no-highlight">42</i>&nbsp;        System.out.println();</b>
+<b class="nc"><i class="no-highlight">43</i>&nbsp;        System.out.println(&quot;Ara toca escollir la longitud de cada vaixell que vols colocar&quot;);</b>
+<b class="nc"><i class="no-highlight">44</i>&nbsp;        int i = 1;</b>
+<b class="nc"><i class="no-highlight">45</i>&nbsp;        while (i &lt;= numShips) {</b>
+<i class="no-highlight">46</i>&nbsp;            int longitud, x, y;
+<i class="no-highlight">47</i>&nbsp;            char orientation;
+<b class="nc"><i class="no-highlight">48</i>&nbsp;            System.out.print(&quot;Quina longitud (2-5) vols que tingui el vaixell numero &quot;); System.out.print(i); System.out.println(&quot;?&quot;);</b>
+<b class="nc"><i class="no-highlight">49</i>&nbsp;            longitud = user.getUserShipLength();</b>
+<b class="nc"><i class="no-highlight">50</i>&nbsp;            System.out.print(&quot;El vaixell numero &quot;); System.out.print(i); System.out.print(&quot; tindra una longitud de &quot;); System.out.println(longitud);</b>
+<b class="nc"><i class="no-highlight">51</i>&nbsp;            System.out.println(&quot;On el voldras colocar? Selecciona el seu eix X (0 - 9)&quot;);</b>
+<b class="nc"><i class="no-highlight">52</i>&nbsp;            x = user.getUserShipX();</b>
+<b class="nc"><i class="no-highlight">53</i>&nbsp;            System.out.println(&quot;Quin sera el seu eix Y (0 - 9)?&quot;);</b>
+<b class="nc"><i class="no-highlight">54</i>&nbsp;            y = user.getUserShipY();</b>
+<b class="nc"><i class="no-highlight">55</i>&nbsp;            System.out.println(&quot;Finalment quina sera la seva orientacio (h / v)?&quot;);</b>
+<b class="nc"><i class="no-highlight">56</i>&nbsp;            orientation = user.getUserShipOrientation();</b>
+<b class="nc"><i class="no-highlight">57</i>&nbsp;            if (jugador.addShip(x, y, orientation, longitud)) {</b>
+<b class="nc"><i class="no-highlight">58</i>&nbsp;                System.out.println(&quot;S&#39;ha colocat el vaixell.&quot;);</b>
+<b class="nc"><i class="no-highlight">59</i>&nbsp;                System.out.println();</b>
+<i class="no-highlight">60</i>&nbsp;                while (true) {
+<b class="nc"><i class="no-highlight">61</i>&nbsp;                    if(maquina.addShip(rand.getRandomX(), rand.getRandomY(), rand.getRandomOrientation(), longitud)) {</b>
+<b class="nc"><i class="no-highlight">62</i>&nbsp;                        System.out.println(&quot;S&#39;ha colocat el vaixell de l&#39;enemic.&quot;);</b>
+<b class="nc"><i class="no-highlight">63</i>&nbsp;                        System.out.println(maquina.getM_arrayShip().get(0).getM_x());</b>
+<b class="nc"><i class="no-highlight">64</i>&nbsp;                        System.out.println(maquina.getM_arrayShip().get(0).getM_y());</b>
+<b class="nc"><i class="no-highlight">65</i>&nbsp;                        System.out.println(maquina.getM_arrayShip().get(0).getM_orientation());</b>
+<b class="nc"><i class="no-highlight">66</i>&nbsp;                        System.out.println();</b>
+<b class="nc"><i class="no-highlight">67</i>&nbsp;                        System.out.println();</b>
+<b class="nc"><i class="no-highlight">68</i>&nbsp;                        break;</b>
+<i class="no-highlight">69</i>&nbsp;                    }
+<i class="no-highlight">70</i>&nbsp;                }
+<b class="nc"><i class="no-highlight">71</i>&nbsp;                i++;</b>
+<i class="no-highlight">72</i>&nbsp;            } else {
+<b class="nc"><i class="no-highlight">73</i>&nbsp;                System.out.println(&quot;Sembla que has colocat el vaixell en una posicio incorrecte, torna-ho a intentar.&quot;);</b>
+<b class="nc"><i class="no-highlight">74</i>&nbsp;                System.out.println();</b>
+<b class="nc"><i class="no-highlight">75</i>&nbsp;                System.out.println();</b>
+<i class="no-highlight">76</i>&nbsp;            }
+<b class="nc"><i class="no-highlight">77</i>&nbsp;        }</b>
+<i class="no-highlight">78</i>&nbsp;
+<b class="nc"><i class="no-highlight">79</i>&nbsp;        System.out.println(&quot;COMENÇA LA PARTIDA...&quot;);</b>
+<i class="no-highlight">80</i>&nbsp;
+<b class="nc"><i class="no-highlight">81</i>&nbsp;        boolean acabar = false;</b>
+<b class="nc"><i class="no-highlight">82</i>&nbsp;        while (!acabar) {</b>
+<i class="no-highlight">83</i>&nbsp;            // print tauler
+<i class="no-highlight">84</i>&nbsp;
+<b class="nc"><i class="no-highlight">85</i>&nbsp;            System.out.println();</b>
+<b class="nc"><i class="no-highlight">86</i>&nbsp;            System.out.println();</b>
+<b class="nc"><i class="no-highlight">87</i>&nbsp;            if (torn == 0) { // JUGA EL JUGADOR</b>
+<b class="nc"><i class="no-highlight">88</i>&nbsp;                int x, y, atac, nShipsAlive = maquina.getM_NshipsAlive();</b>
+<i class="no-highlight">89</i>&nbsp;                while (true) {
+<b class="nc"><i class="no-highlight">90</i>&nbsp;                    System.out.println(&quot;Selecciona la posició X del teu atac (0 - 9): &quot;);</b>
+<b class="nc"><i class="no-highlight">91</i>&nbsp;                    x = user.getUserShipX();</b>
+<b class="nc"><i class="no-highlight">92</i>&nbsp;                    System.out.println(&quot;Selecciona la posició X del teu atac (0 - 9): &quot;);</b>
+<b class="nc"><i class="no-highlight">93</i>&nbsp;                    y = user.getUserShipY();</b>
+<b class="nc"><i class="no-highlight">94</i>&nbsp;                    System.out.println();</b>
+<i class="no-highlight">95</i>&nbsp;
+<b class="nc"><i class="no-highlight">96</i>&nbsp;                    atac = maquina.makeAttack(x, y);</b>
+<b class="nc"><i class="no-highlight">97</i>&nbsp;                    if (atac == -1) {</b>
+<b class="nc"><i class="no-highlight">98</i>&nbsp;                        System.out.println(&quot;Aquesta casella ja ha sigut descoberta, prova amb un altre&quot;);</b>
+<b class="nc"><i class="no-highlight">99</i>&nbsp;                        continue;</b>
+<i class="no-highlight">100</i>&nbsp;                    }
+<i class="no-highlight">101</i>&nbsp;                    break;
+<i class="no-highlight">102</i>&nbsp;                }
+<b class="nc"><i class="no-highlight">103</i>&nbsp;                System.out.print(&quot;L&#39;atac a la posicio (&quot;); System.out.print(x); System.out.print(&quot;, &quot;); System.out.print(y); System.out.print(&quot;) es ... &quot;);</b>
+<b class="nc"><i class="no-highlight">104</i>&nbsp;                if (atac == 0) {</b>
+<b class="nc"><i class="no-highlight">105</i>&nbsp;                    System.out.println(&quot; AIGUA, canvi de torn.&quot;);</b>
+<b class="nc"><i class="no-highlight">106</i>&nbsp;                    torn = 1;</b>
+<i class="no-highlight">107</i>&nbsp;                } else {
+<b class="nc"><i class="no-highlight">108</i>&nbsp;                    if (nShipsAlive &gt; maquina.getM_NshipsAlive()) {</b>
+<b class="nc"><i class="no-highlight">109</i>&nbsp;                        System.out.print(&quot; TOCAT i ENFONSAT.&quot;);</b>
+<b class="nc"><i class="no-highlight">110</i>&nbsp;                        if (maquina.getM_NshipsAlive() == 0) {</b>
+<b class="nc"><i class="no-highlight">111</i>&nbsp;                            System.out.println();</b>
+<b class="nc"><i class="no-highlight">112</i>&nbsp;                            System.out.println(&quot;ENHORABONA, HAS GUANYAT A LA MAQUINA!&quot;);</b>
+<b class="nc"><i class="no-highlight">113</i>&nbsp;                            acabar = true;</b>
+<i class="no-highlight">114</i>&nbsp;                        } else {
+<b class="nc"><i class="no-highlight">115</i>&nbsp;                            System.out.println(&quot; Segueixes jugant&quot;);</b>
+<i class="no-highlight">116</i>&nbsp;                        }
+<i class="no-highlight">117</i>&nbsp;                    } else {
+<b class="nc"><i class="no-highlight">118</i>&nbsp;                        System.out.println(&quot; TOCAT. Segueixes jugant.&quot;);</b>
+<i class="no-highlight">119</i>&nbsp;                    }
+<i class="no-highlight">120</i>&nbsp;                }
+<b class="nc"><i class="no-highlight">121</i>&nbsp;            }</b>
+<i class="no-highlight">122</i>&nbsp;            else { // JUGA LA MAQUINA
+<b class="nc"><i class="no-highlight">123</i>&nbsp;                int x, y, atac, nShipsAlive = jugador.getM_NshipsAlive();</b>
+<i class="no-highlight">124</i>&nbsp;                while (true) {
+<b class="nc"><i class="no-highlight">125</i>&nbsp;                    System.out.print(&quot;La maquina ha atacat la posicio (&quot;);</b>
+<b class="nc"><i class="no-highlight">126</i>&nbsp;                    x = rand.getRandomX(); y = rand.getRandomY();</b>
+<b class="nc"><i class="no-highlight">127</i>&nbsp;                    System.out.print(x); System.out.print(&quot;, &quot;); System.out.print(y); System.out.println(&quot;).&quot;);</b>
+<b class="nc"><i class="no-highlight">128</i>&nbsp;                    System.out.println();</b>
+<b class="nc"><i class="no-highlight">129</i>&nbsp;                    atac = jugador.makeAttack(x, y);</b>
+<b class="nc"><i class="no-highlight">130</i>&nbsp;                    if (atac == -1) {</b>
+<b class="nc"><i class="no-highlight">131</i>&nbsp;                        System.out.println(&quot;Aquesta casella ja ha sigut descoberta, prova amb un altre&quot;);</b>
+<b class="nc"><i class="no-highlight">132</i>&nbsp;                        continue;</b>
+<i class="no-highlight">133</i>&nbsp;                    }
+<i class="no-highlight">134</i>&nbsp;                    break;
+<i class="no-highlight">135</i>&nbsp;                }
+<b class="nc"><i class="no-highlight">136</i>&nbsp;                System.out.print(&quot;L&#39;atac a la posicio (&quot;); System.out.print(x); System.out.print(&quot;, &quot;); System.out.print(y); System.out.print(&quot;) es ... &quot;);</b>
+<b class="nc"><i class="no-highlight">137</i>&nbsp;                if (atac == 0) {</b>
+<b class="nc"><i class="no-highlight">138</i>&nbsp;                    System.out.println(&quot; AIGUA, canvi de torn.&quot;);</b>
+<b class="nc"><i class="no-highlight">139</i>&nbsp;                    torn = 0;</b>
+<i class="no-highlight">140</i>&nbsp;                } else {
+<b class="nc"><i class="no-highlight">141</i>&nbsp;                    if (nShipsAlive &gt; jugador.getM_NshipsAlive()) {</b>
+<b class="nc"><i class="no-highlight">142</i>&nbsp;                        System.out.print(&quot; TOCAT i ENFONSAT.&quot;);</b>
+<b class="nc"><i class="no-highlight">143</i>&nbsp;                        if (jugador.getM_NshipsAlive() == 0) {</b>
+<b class="nc"><i class="no-highlight">144</i>&nbsp;                            System.out.println();</b>
+<b class="nc"><i class="no-highlight">145</i>&nbsp;                            System.out.println(&quot; T&#39;HA GUANYAT LA MAQUINA, NO M&#39;HO PUC CREURE...&quot;);</b>
+<b class="nc"><i class="no-highlight">146</i>&nbsp;                            acabar = true;</b>
+<i class="no-highlight">147</i>&nbsp;                        } else {
+<b class="nc"><i class="no-highlight">148</i>&nbsp;                            System.out.println(&quot; Segueix jugant la maquina&quot;);</b>
+<i class="no-highlight">149</i>&nbsp;                        }
+<i class="no-highlight">150</i>&nbsp;                    } else {
+<b class="nc"><i class="no-highlight">151</i>&nbsp;                        System.out.println(&quot; TOCAT. Segueix jugant la maquina.&quot;);</b>
+<i class="no-highlight">152</i>&nbsp;                    }
+<i class="no-highlight">153</i>&nbsp;                }
+<b class="nc"><i class="no-highlight">154</i>&nbsp;            }</b>
+<i class="no-highlight">155</i>&nbsp;        }
+<i class="no-highlight">156</i>&nbsp;    }
+<i class="no-highlight">157</i>&nbsp;
+<i class="no-highlight">158</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -104,7 +257,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2021-11-15 12:45</div>
+    <div style="float:right;">generated on 2021-11-15 19:09</div>
 </div>
 </body>
 </html>

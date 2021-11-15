@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > Gameboard</title>
+  <title>Coverage Report > UserInputs</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -17,10 +17,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">BattleshipGame.Controlador</a>
+    <a href="../index.html">BattleshipGame.Model</a>
 </div>
 
-<h1>Coverage Summary for Class: Gameboard (BattleshipGame.Controlador)</h1>
+<h1>Coverage Summary for Class: UserInputs (BattleshipGame.Model)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -39,7 +39,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">Gameboard</td>
+  <td class="name">UserInputs</td>
 <td class="coverageStat">
   <span class="percent">
     100%
@@ -50,18 +50,18 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    16,7%
   </span>
   <span class="absValue">
-    (8/8)
+    (1/6)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    3,2%
   </span>
   <span class="absValue">
-    (40/40)
+    (2/62)
   </span>
 </td>
 </tr>
@@ -73,87 +73,128 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package BattleshipGame.Controlador;
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package BattleshipGame.Model;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;public class Gameboard {
-<i class="no-highlight">4</i>&nbsp;    private Cell[][] board;
-<i class="no-highlight">5</i>&nbsp;
-<b class="fc"><i class="no-highlight">6</i>&nbsp;    public Gameboard() {</b>
-<b class="fc"><i class="no-highlight">7</i>&nbsp;        this.board = new Cell[10][10];</b>
-<b class="fc"><i class="no-highlight">8</i>&nbsp;        for(int i = 0; i &lt; 10; i++) {</b>
-<b class="fc"><i class="no-highlight">9</i>&nbsp;            for(int j = 0; j &lt; 10; j++) {</b>
-<b class="fc"><i class="no-highlight">10</i>&nbsp;                this.board[i][j] = new Cell();</b>
-<i class="no-highlight">11</i>&nbsp;            }
-<i class="no-highlight">12</i>&nbsp;        }
-<i class="no-highlight">13</i>&nbsp;    }
-<i class="no-highlight">14</i>&nbsp;
-<b class="fc"><i class="no-highlight">15</i>&nbsp;    public void setCellValue(int x, int y, int value) { this.board[x][y].setM_value(value); }</b>
-<b class="fc"><i class="no-highlight">16</i>&nbsp;    public void showCell(int x, int y) { this.board[x][y].setM_show(true); }</b>
-<i class="no-highlight">17</i>&nbsp;
-<b class="fc"><i class="no-highlight">18</i>&nbsp;    public int getCellValue(int x, int y) { return this.board[x][y].getM_value(); }</b>
-<b class="fc"><i class="no-highlight">19</i>&nbsp;    public boolean getCellShow(int x, int y) { return this.board[x][y].getM_show(); }</b>
-<i class="no-highlight">20</i>&nbsp;
-<i class="no-highlight">21</i>&nbsp;    public boolean placeShip(int x, int y, int orientation, int length) {
-<b class="fc"><i class="no-highlight">22</i>&nbsp;        if (orientation == &#39;h&#39; &amp;&amp; y + length &lt;= 10) {</b>
-<b class="fc"><i class="no-highlight">23</i>&nbsp;            for(int i = y; i &lt; y + length; i++) {</b>
-<b class="fc"><i class="no-highlight">24</i>&nbsp;                if (this.getCellValue(x, i) != 0) {</b>
-<b class="fc"><i class="no-highlight">25</i>&nbsp;                    return false;</b>
-<i class="no-highlight">26</i>&nbsp;                }
-<i class="no-highlight">27</i>&nbsp;            }
-<b class="fc"><i class="no-highlight">28</i>&nbsp;            for(int i = y; i &lt; y + length; i++) {</b>
-<b class="fc"><i class="no-highlight">29</i>&nbsp;                this.setCellValue(x, i, 1);</b>
-<i class="no-highlight">30</i>&nbsp;            }
-<b class="fc"><i class="no-highlight">31</i>&nbsp;            return true;</b>
-<i class="no-highlight">32</i>&nbsp;        }
-<i class="no-highlight">33</i>&nbsp;
-<b class="fc"><i class="no-highlight">34</i>&nbsp;        if (orientation == &#39;v&#39; &amp;&amp; x + length &lt;= 10) {</b>
-<b class="fc"><i class="no-highlight">35</i>&nbsp;            for(int i = x; i &lt; x + length; i++) {</b>
-<b class="fc"><i class="no-highlight">36</i>&nbsp;                if (this.getCellValue(i, y) != 0) {</b>
-<b class="fc"><i class="no-highlight">37</i>&nbsp;                    return false;</b>
-<i class="no-highlight">38</i>&nbsp;                }
-<i class="no-highlight">39</i>&nbsp;
-<i class="no-highlight">40</i>&nbsp;            }
-<b class="fc"><i class="no-highlight">41</i>&nbsp;            for(int i = x; i &lt; x + length; i++) {</b>
-<b class="fc"><i class="no-highlight">42</i>&nbsp;                this.setCellValue(i, y, 1);</b>
-<i class="no-highlight">43</i>&nbsp;            }
-<b class="fc"><i class="no-highlight">44</i>&nbsp;            return true;</b>
-<i class="no-highlight">45</i>&nbsp;        }
-<b class="fc"><i class="no-highlight">46</i>&nbsp;        return false;</b>
-<i class="no-highlight">47</i>&nbsp;    }
-<i class="no-highlight">48</i>&nbsp;
-<i class="no-highlight">49</i>&nbsp;    public int attackPoint(int x, int y) {
-<b class="fc"><i class="no-highlight">50</i>&nbsp;        if (this.getCellShow(x, y)) {</b>
-<b class="fc"><i class="no-highlight">51</i>&nbsp;            return -1;</b>
-<i class="no-highlight">52</i>&nbsp;        } else {
-<b class="fc"><i class="no-highlight">53</i>&nbsp;            this.showCell(x, y);</b>
-<b class="fc"><i class="no-highlight">54</i>&nbsp;            return this.getCellValue(x, y);</b>
-<i class="no-highlight">55</i>&nbsp;        }
-<i class="no-highlight">56</i>&nbsp;    }
-<i class="no-highlight">57</i>&nbsp;
-<i class="no-highlight">58</i>&nbsp;    public boolean isSunk(int x, int y, char orientation, int length) {
-<b class="fc"><i class="no-highlight">59</i>&nbsp;        if (orientation == &#39;h&#39;) {</b>
-<b class="fc"><i class="no-highlight">60</i>&nbsp;            for(int i = y; i &lt; y + length; i++) {</b>
-<b class="fc"><i class="no-highlight">61</i>&nbsp;                if (!this.getCellShow(x, i)) {</b>
-<b class="fc"><i class="no-highlight">62</i>&nbsp;                    return false;</b>
-<i class="no-highlight">63</i>&nbsp;                }
-<i class="no-highlight">64</i>&nbsp;            }
-<b class="fc"><i class="no-highlight">65</i>&nbsp;            for(int i = y; i &lt; y + length; i++) {</b>
-<b class="fc"><i class="no-highlight">66</i>&nbsp;                this.setCellValue(x, i, 2);</b>
-<i class="no-highlight">67</i>&nbsp;            }
-<i class="no-highlight">68</i>&nbsp;        } else {
-<b class="fc"><i class="no-highlight">69</i>&nbsp;            for(int i = x; i &lt; x + length; i++) {</b>
-<b class="fc"><i class="no-highlight">70</i>&nbsp;                if (!this.getCellShow(i, y)) {</b>
-<b class="fc"><i class="no-highlight">71</i>&nbsp;                    return false;</b>
-<i class="no-highlight">72</i>&nbsp;                }
-<i class="no-highlight">73</i>&nbsp;            }
-<b class="fc"><i class="no-highlight">74</i>&nbsp;            for(int i = x; i &lt; x + length; i++) {</b>
-<b class="fc"><i class="no-highlight">75</i>&nbsp;                this.setCellValue(i, y, 2);</b>
-<i class="no-highlight">76</i>&nbsp;            }
-<i class="no-highlight">77</i>&nbsp;        }
-<b class="fc"><i class="no-highlight">78</i>&nbsp;        return true;</b>
-<i class="no-highlight">79</i>&nbsp;    }
-<i class="no-highlight">80</i>&nbsp;
-<i class="no-highlight">81</i>&nbsp;}
+<i class="no-highlight">3</i>&nbsp;import java.util.Scanner;
+<i class="no-highlight">4</i>&nbsp;
+<b class="fc"><i class="no-highlight">5</i>&nbsp;public class UserInputs implements IUserInputs {</b>
+<b class="fc"><i class="no-highlight">6</i>&nbsp;    Scanner scan = new Scanner(System.in);</b>
+<i class="no-highlight">7</i>&nbsp;
+<i class="no-highlight">8</i>&nbsp;    int userShipX;
+<i class="no-highlight">9</i>&nbsp;    int userShipY;
+<i class="no-highlight">10</i>&nbsp;    char userShipOrientation;
+<i class="no-highlight">11</i>&nbsp;    int userNumberOfShips;
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;    @Override
+<i class="no-highlight">14</i>&nbsp;    public int getUserShipX() {
+<i class="no-highlight">15</i>&nbsp;        while (true) {
+<b class="nc"><i class="no-highlight">16</i>&nbsp;            int i = -1;</b>
+<i class="no-highlight">17</i>&nbsp;            try {
+<b class="nc"><i class="no-highlight">18</i>&nbsp;                i = scan.nextInt();</b>
+<b class="nc"><i class="no-highlight">19</i>&nbsp;                if (i &gt;= 0 &amp;&amp; i &lt; 10) {</b>
+<b class="nc"><i class="no-highlight">20</i>&nbsp;                    return i;</b>
+<i class="no-highlight">21</i>&nbsp;                } else {
+<b class="nc"><i class="no-highlight">22</i>&nbsp;                    if (i &lt; 0) {</b>
+<b class="nc"><i class="no-highlight">23</i>&nbsp;                        System.out.println(&quot;Numero introduit menor a 0. Torna-ho a intentar.&quot;);</b>
+<i class="no-highlight">24</i>&nbsp;                    } else {
+<b class="nc"><i class="no-highlight">25</i>&nbsp;                        System.out.println(&quot;Numero introduit mes gran que 9. Torna-ho a intentar.&quot;);</b>
+<i class="no-highlight">26</i>&nbsp;                    }
+<i class="no-highlight">27</i>&nbsp;                }
+<b class="nc"><i class="no-highlight">28</i>&nbsp;            } catch (Exception E) {</b>
+<b class="nc"><i class="no-highlight">29</i>&nbsp;                scan.nextLine();</b>
+<b class="nc"><i class="no-highlight">30</i>&nbsp;                System.out.println(&quot;No es un digit. Torna-ho a intentar.&quot;);</b>
+<b class="nc"><i class="no-highlight">31</i>&nbsp;            }</b>
+<b class="nc"><i class="no-highlight">32</i>&nbsp;        }</b>
+<i class="no-highlight">33</i>&nbsp;    }
+<i class="no-highlight">34</i>&nbsp;
+<i class="no-highlight">35</i>&nbsp;    @Override
+<i class="no-highlight">36</i>&nbsp;    public int getUserShipY() {
+<i class="no-highlight">37</i>&nbsp;        while (true) {
+<b class="nc"><i class="no-highlight">38</i>&nbsp;            int i = -1;</b>
+<i class="no-highlight">39</i>&nbsp;            try {
+<b class="nc"><i class="no-highlight">40</i>&nbsp;                i = scan.nextInt();</b>
+<b class="nc"><i class="no-highlight">41</i>&nbsp;                if (i &gt;= 0 &amp;&amp; i &lt; 10) {</b>
+<b class="nc"><i class="no-highlight">42</i>&nbsp;                    return i;</b>
+<i class="no-highlight">43</i>&nbsp;                } else {
+<b class="nc"><i class="no-highlight">44</i>&nbsp;                    if (i &lt; 0) {</b>
+<b class="nc"><i class="no-highlight">45</i>&nbsp;                        System.out.println(&quot;Numero introduit menor a 0. Torna-ho a intentar.&quot;);</b>
+<i class="no-highlight">46</i>&nbsp;                    } else {
+<b class="nc"><i class="no-highlight">47</i>&nbsp;                        System.out.println(&quot;Numero introduit mes gran que 9. Torna-ho a intentar.&quot;);</b>
+<i class="no-highlight">48</i>&nbsp;                    }
+<i class="no-highlight">49</i>&nbsp;                }
+<b class="nc"><i class="no-highlight">50</i>&nbsp;            } catch (Exception E) {</b>
+<b class="nc"><i class="no-highlight">51</i>&nbsp;                scan.nextLine();</b>
+<b class="nc"><i class="no-highlight">52</i>&nbsp;                System.out.println(&quot;No es un digit. Torna-ho a intentar.&quot;);</b>
+<b class="nc"><i class="no-highlight">53</i>&nbsp;            }</b>
+<b class="nc"><i class="no-highlight">54</i>&nbsp;        }</b>
+<i class="no-highlight">55</i>&nbsp;    }
+<i class="no-highlight">56</i>&nbsp;
+<i class="no-highlight">57</i>&nbsp;    @Override
+<i class="no-highlight">58</i>&nbsp;    public char getUserShipOrientation() {
+<i class="no-highlight">59</i>&nbsp;        while (true) {
+<b class="nc"><i class="no-highlight">60</i>&nbsp;            String i = &quot;&quot;;</b>
+<i class="no-highlight">61</i>&nbsp;            try {
+<b class="nc"><i class="no-highlight">62</i>&nbsp;                i = scan.nextLine();</b>
+<b class="nc"><i class="no-highlight">63</i>&nbsp;                if (i.length() == 1) {</b>
+<b class="nc"><i class="no-highlight">64</i>&nbsp;                    if (i.charAt(0) == &#39;h&#39; || i.charAt(0) == &#39;v&#39;) {</b>
+<b class="nc"><i class="no-highlight">65</i>&nbsp;                        return i.charAt(0);</b>
+<i class="no-highlight">66</i>&nbsp;                    } else {
+<b class="nc"><i class="no-highlight">67</i>&nbsp;                        System.out.println(&quot;Caracter no valid, només s&#39;accepta h o v. Torna-ho a intentar.&quot;);</b>
+<i class="no-highlight">68</i>&nbsp;                    }
+<i class="no-highlight">69</i>&nbsp;                } else {
+<b class="nc"><i class="no-highlight">70</i>&nbsp;                    System.out.println(&quot;Cadena de caracters massa llarga. Torna-ho a intentar.&quot;);</b>
+<i class="no-highlight">71</i>&nbsp;                }
+<b class="nc"><i class="no-highlight">72</i>&nbsp;            } catch (Exception E) {</b>
+<b class="nc"><i class="no-highlight">73</i>&nbsp;                scan.nextLine();</b>
+<b class="nc"><i class="no-highlight">74</i>&nbsp;                System.out.println(&quot;No es un char. Torna-ho a intentar.&quot;);</b>
+<b class="nc"><i class="no-highlight">75</i>&nbsp;            }</b>
+<b class="nc"><i class="no-highlight">76</i>&nbsp;        }</b>
+<i class="no-highlight">77</i>&nbsp;    }
+<i class="no-highlight">78</i>&nbsp;
+<i class="no-highlight">79</i>&nbsp;    @Override
+<i class="no-highlight">80</i>&nbsp;    public int getNumberOfShips() {
+<i class="no-highlight">81</i>&nbsp;        while (true) {
+<b class="nc"><i class="no-highlight">82</i>&nbsp;            int i = -1;</b>
+<i class="no-highlight">83</i>&nbsp;            try {
+<b class="nc"><i class="no-highlight">84</i>&nbsp;                i = scan.nextInt();</b>
+<b class="nc"><i class="no-highlight">85</i>&nbsp;                if (i &gt;= 1 &amp;&amp; i &lt; 10) {</b>
+<b class="nc"><i class="no-highlight">86</i>&nbsp;                    return i;</b>
+<i class="no-highlight">87</i>&nbsp;                } else {
+<b class="nc"><i class="no-highlight">88</i>&nbsp;                    if (i &lt; 1) {</b>
+<b class="nc"><i class="no-highlight">89</i>&nbsp;                        System.out.println(&quot;Numero introduit menor a 1. Torna-ho a intentar.&quot;);</b>
+<i class="no-highlight">90</i>&nbsp;                    } else {
+<b class="nc"><i class="no-highlight">91</i>&nbsp;                        System.out.println(&quot;Numero introduit mes gran que 9. Torna-ho a intentar.&quot;);</b>
+<i class="no-highlight">92</i>&nbsp;                    }
+<i class="no-highlight">93</i>&nbsp;                }
+<b class="nc"><i class="no-highlight">94</i>&nbsp;            } catch (Exception E) {</b>
+<b class="nc"><i class="no-highlight">95</i>&nbsp;                scan.nextLine();</b>
+<b class="nc"><i class="no-highlight">96</i>&nbsp;                System.out.println(&quot;No es un digit. Torna-ho a intentar.&quot;);</b>
+<b class="nc"><i class="no-highlight">97</i>&nbsp;            }</b>
+<b class="nc"><i class="no-highlight">98</i>&nbsp;        }</b>
+<i class="no-highlight">99</i>&nbsp;    }
+<i class="no-highlight">100</i>&nbsp;
+<i class="no-highlight">101</i>&nbsp;    @Override
+<i class="no-highlight">102</i>&nbsp;    public int getUserShipLength() {
+<i class="no-highlight">103</i>&nbsp;        while (true) {
+<b class="nc"><i class="no-highlight">104</i>&nbsp;            int i = -1;</b>
+<i class="no-highlight">105</i>&nbsp;            try {
+<b class="nc"><i class="no-highlight">106</i>&nbsp;                i = scan.nextInt();</b>
+<b class="nc"><i class="no-highlight">107</i>&nbsp;                if (i &gt;= 2 &amp;&amp; i &lt; 6) {</b>
+<b class="nc"><i class="no-highlight">108</i>&nbsp;                    return i;</b>
+<i class="no-highlight">109</i>&nbsp;                } else {
+<b class="nc"><i class="no-highlight">110</i>&nbsp;                    if (i &lt; 2) {</b>
+<b class="nc"><i class="no-highlight">111</i>&nbsp;                        System.out.println(&quot;Quin vaixell mes curt ha de medir mes de 2. Torna-ho a intentar.&quot;);</b>
+<i class="no-highlight">112</i>&nbsp;                    } else {
+<b class="nc"><i class="no-highlight">113</i>&nbsp;                        System.out.println(&quot;Aquest vaixell es massa gran, ha de medir menys de 5 Torna-ho a intentar.&quot;);</b>
+<i class="no-highlight">114</i>&nbsp;                    }
+<i class="no-highlight">115</i>&nbsp;                }
+<b class="nc"><i class="no-highlight">116</i>&nbsp;            } catch (Exception E) {</b>
+<b class="nc"><i class="no-highlight">117</i>&nbsp;                scan.nextLine();</b>
+<b class="nc"><i class="no-highlight">118</i>&nbsp;                System.out.println(&quot;No es un digit. Torna-ho a intentar.&quot;);</b>
+<b class="nc"><i class="no-highlight">119</i>&nbsp;            }</b>
+<b class="nc"><i class="no-highlight">120</i>&nbsp;        }</b>
+<i class="no-highlight">121</i>&nbsp;    }
+<i class="no-highlight">122</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -180,7 +221,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2021-11-15 12:45</div>
+    <div style="float:right;">generated on 2021-11-15 19:09</div>
 </div>
 </body>
 </html>

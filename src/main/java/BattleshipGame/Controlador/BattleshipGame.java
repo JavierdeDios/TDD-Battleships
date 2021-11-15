@@ -11,8 +11,6 @@ public class BattleshipGame {
     private IRandomShip randShip;
     private IUserInputs userShip;
 
-
-
     public static void main(String[] args) throws InterruptedException, IOException {
 
         UserInputs user = new UserInputs();
