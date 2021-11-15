@@ -3,12 +3,12 @@ package BattleshipGame.Controlador;
 import BattleshipGame.Model.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class BattleshipGame {
 
     private IRandomShip randShip;
-    private IRandomAttack randAttack;
     private IUserInputs userShip;
 
 
@@ -17,7 +17,9 @@ public class BattleshipGame {
 
         UserInputs user = new UserInputs();
         RandomShip rand = new RandomShip();
+
         int numShips = 0;
+        int torn = 0; //comença jugant el jugador.
 
         Player jugador = new Player();
         Player maquina = new Player();
@@ -60,6 +62,11 @@ public class BattleshipGame {
                 while (true) {
                     if(maquina.addShip(rand.getRandomX(), rand.getRandomY(), rand.getRandomOrientation(), longitud)) {
                         System.out.println("S'ha colocat el vaixell de l'enemic.");
+                        System.out.println(maquina.getM_arrayShip().get(0).getM_x());
+                        System.out.println(maquina.getM_arrayShip().get(0).getM_y());
+                        System.out.println(maquina.getM_arrayShip().get(0).getM_orientation());
+                        System.out.println();
+                        System.out.println();
                         break;
                     }
                 }
@@ -71,9 +78,83 @@ public class BattleshipGame {
             }
         }
 
+        System.out.println("COMENÇA LA PARTIDA...");
 
+        boolean acabar = false;
+        while (!acabar) {
+            // print tauler
 
+            System.out.println();
+            System.out.println();
+            if (torn == 0) { // JUGA EL JUGADOR
+                int x, y, atac, nShipsAlive = maquina.getM_NshipsAlive();
+                while (true) {
+                    System.out.println("Selecciona la posició X del teu atac (0 - 9): ");
+                    x = user.getUserShipX();
+                    System.out.println("Selecciona la posició X del teu atac (0 - 9): ");
+                    y = user.getUserShipY();
+                    System.out.println();
 
+                    atac = maquina.makeAttack(x, y);
+                    if (atac == -1) {
+                        System.out.println("Aquesta casella ja ha sigut descoberta, prova amb un altre");
+                        continue;
+                    }
+                    break;
+                }
+                System.out.print("L'atac a la posicio ("); System.out.print(x); System.out.print(", "); System.out.print(y); System.out.print(") es ... ");
+                if (atac == 0) {
+                    System.out.println(" AIGUA, canvi de torn.");
+                    torn = 1;
+                } else {
+                    if (nShipsAlive > maquina.getM_NshipsAlive()) {
+                        System.out.print(" TOCAT i ENFONSAT.");
+                        if (maquina.getM_NshipsAlive() == 0) {
+                            System.out.println();
+                            System.out.println("ENHORABONA, HAS GUANYAT A LA MAQUINA!");
+                            acabar = true;
+                        } else {
+                            System.out.println(" Segueixes jugant");
+                        }
+                    } else {
+                        System.out.println(" TOCAT. Segueixes jugant.");
+                    }
+                }
+            }
+            else { // JUGA LA MAQUINA
+                int x, y, atac, nShipsAlive = jugador.getM_NshipsAlive();
+                while (true) {
+                    System.out.print("La maquina ha atacat la posicio (");
+                    x = rand.getRandomX(); y = rand.getRandomY();
+                    System.out.print(x); System.out.print(", "); System.out.print(y); System.out.println(").");
+                    System.out.println();
+                    atac = jugador.makeAttack(x, y);
+                    if (atac == -1) {
+                        System.out.println("Aquesta casella ja ha sigut descoberta, prova amb un altre");
+                        continue;
+                    }
+                    break;
+                }
+                System.out.print("L'atac a la posicio ("); System.out.print(x); System.out.print(", "); System.out.print(y); System.out.print(") es ... ");
+                if (atac == 0) {
+                    System.out.println(" AIGUA, canvi de torn.");
+                    torn = 0;
+                } else {
+                    if (nShipsAlive > jugador.getM_NshipsAlive()) {
+                        System.out.print(" TOCAT i ENFONSAT.");
+                        if (jugador.getM_NshipsAlive() == 0) {
+                            System.out.println();
+                            System.out.println(" T'HA GUANYAT LA MAQUINA, NO M'HO PUC CREURE...");
+                            acabar = true;
+                        } else {
+                            System.out.println(" Segueix jugant la maquina");
+                        }
+                    } else {
+                        System.out.println(" TOCAT. Segueix jugant la maquina.");
+                    }
+                }
+            }
+        }
     }
 
 }
