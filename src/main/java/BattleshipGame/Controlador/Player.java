@@ -33,7 +33,7 @@ public class Player {
 
     public int findShip(int x, int y) {
         ArrayList<Ship> ships = this.getM_arrayShip();
-        for(int i = 0; i < this.getM_NshipsAlive(); i++) {
+        for(int i = 0; i < this.m_arrayShips.size(); i++) {
             if (ships.get(i).isThisShip(x, y)) {
                 return i;
             }
